@@ -9,32 +9,32 @@ import java.util.List;
 public class Book {
 
     @Id
-    @Column(name="BOOK_ID")
+    @Column(name = "BOOK_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name="ISBN", nullable = false)
+    @Column(name = "ISBN", nullable = false)
     private String isbn;
 
-    @Column(name ="BOOK_Title", nullable = false)
+    @Column(name = "BOOK_Title", nullable = false)
     private String title;
 
-    @Column(name ="AUTHOR", nullable = false)
+    @Column(name = "AUTHOR", nullable = false)
     private String author;
 
-    @Column(name="BOOK_COVER", nullable = false)
+    @Column(name = "BOOK_COVER", nullable = false)
     private String bookImage;
 
-    @Column(name="DESCRIPTION", nullable = false)
+    @Column(name = "DESCRIPTION", nullable = false)
     private String description;
 
-    @Column(name="GENRE", nullable = false)
+    @Column(name = "GENRE", nullable = false)
     private String genre;
 
-    @Column(name="PAGE_COUNT", nullable = false)
+    @Column(name = "PAGE_COUNT", nullable = false)
     private long pageCount;
 
-    @Column(name="PUBLISHED_DATE", nullable = false)
+    @Column(name = "PUBLISHED_DATE", nullable = false)
     private Timestamp publishedDate;
 
     @Column(name = "RATING", nullable = true)
@@ -43,16 +43,20 @@ public class Book {
     @Column(name = "BUY_LINK", nullable = false)
     private String buyLink;
 
+    @Column(name = "PURCHASE_PRICE", nullable = false)
+    private float purhcasePrice;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "book")
     private List<Review> reviews;
 
-//    Empty Constructor
-    public Book(){
+    //    Empty Constructor
+    public Book() {
     }
 
 //    Constructor
 
-    public Book(long id, String isbn, String title, String author, String bookImage, String description, String genre, Long pageCount, Timestamp publishedDate, Integer rating, String buyLink, List<Review> reviews) {
+
+    public Book(long id, String isbn, String title, String author, String bookImage, String description, String genre, long pageCount, Timestamp publishedDate, Integer rating, String buyLink, float purhcasePrice, List<Review> reviews) {
         this.id = id;
         this.isbn = isbn;
         this.title = title;
@@ -64,9 +68,9 @@ public class Book {
         this.publishedDate = publishedDate;
         this.rating = rating;
         this.buyLink = buyLink;
+        this.purhcasePrice = purhcasePrice;
         this.reviews = reviews;
     }
-
 
 //    Getters and Setters
 
@@ -126,11 +130,11 @@ public class Book {
         this.genre = genre;
     }
 
-    public Long getPageCount() {
+    public long getPageCount() {
         return pageCount;
     }
 
-    public void setPageCount(Long pageCount) {
+    public void setPageCount(long pageCount) {
         this.pageCount = pageCount;
     }
 
@@ -158,6 +162,14 @@ public class Book {
         this.buyLink = buyLink;
     }
 
+    public float getPurhcasePrice() {
+        return purhcasePrice;
+    }
+
+    public void setPurhcasePrice(float purhcasePrice) {
+        this.purhcasePrice = purhcasePrice;
+    }
+
     public List<Review> getReviews() {
         return reviews;
     }
@@ -165,6 +177,4 @@ public class Book {
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
     }
-
-
 }
