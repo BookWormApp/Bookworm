@@ -7,10 +7,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class BookController {
 
+    //-- Book list
     @GetMapping("/booklist")
-    @ResponseBody
     public String showBook(){
-        return "List of books";
+        return "main/booklist";
+    }
+
+    //-- Welcome Page
+    @GetMapping("/welcomePage")
+    public String welcomePage(){
+        return "main/welcomePage";
+    }
+
+    //-- Single Book Layout
+    @GetMapping("/singleBook")
+    public String singleBook(){
+        return "main/singleBook";
     }
 
 }

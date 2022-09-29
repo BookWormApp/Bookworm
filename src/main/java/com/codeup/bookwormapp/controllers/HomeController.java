@@ -11,12 +11,16 @@ public class HomeController {
 
     //-- Index Page
     @GetMapping("/")
-    @ResponseBody
     public String index(){
-        return "This is the landing page!";
+        return "home/index";
     }
 
 
+    //-- About Page
+    @GetMapping("/about")
+    public String about(){
+        return "home/about";
+    }
 
 
 }
