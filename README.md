@@ -14,11 +14,11 @@
 * 3rd party links to purchase book
 * Create, Edit and Delete Book Reviews
 * Like and Rate Books 
-* View best seller list
-* Recieve Recommendations based on liked books genre
+* View bestseller list
+* Receive Recommendations based on liked books genre
 * Customize and update Profile Page
 * Spring security to create separation of privileges based on user roles
-* Administrative role to Delete reviews or user accounts to ensure webiste compliance
+* Administrative role to Delete reviews or user accounts to ensure website compliance
 
 
 
@@ -31,14 +31,18 @@
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 * [![JQuery][JQuery.com]][JQuery-url]
 
+###Wireframe
+[Book Worm WireFrame](https://www.figma.com/file/mtj3KazkwJlMVHTIq4RQxJ/Book-Worm?node-id=0%3A1)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ---
 <h4>Project Creators</h4>
-Nicholas' GitHub [@HeyGilly] (https://github.com/HeyGilly) &nbsp;&middot;&nbsp;
-Yasmine's GitHub [@YasmineRico](https://github.com/YasmineRico) &nbsp;&middot;&nbsp;
+> GitHub [@HeyGilly](https://github.com/HeyGilly) &nbsp;&middot;&nbsp;
+> LinkedIn [@HeyGilly](https://www.linkedin.com/in/heygilly/)
 
+> GitHub [@YasmineRico](https://github.com/YasmineRico) &nbsp;&middot;&nbsp;
+> LinkedIn [@YasmineRico](https://www.linkedin.com/in/yasminerico/)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
