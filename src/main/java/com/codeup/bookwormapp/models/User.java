@@ -41,7 +41,7 @@ public class User {
     @Column(name = "STATE", nullable = false)
     private String state;
 
-    @Column(name = "BIO")
+    @Column(name = "BIO",length = 50)
     private String bio;
 
     @Column(name = "FAVORITE_GENRE")
