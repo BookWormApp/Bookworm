@@ -12,8 +12,11 @@ public class HomeController {
     //-- Index Page
     @GetMapping("/")
     @ResponseBody
-    public String index(Model model){
+    public String index(){
         return " Hello World";
     }
+
+
+
 
 }
