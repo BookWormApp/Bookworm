@@ -1,11 +1,27 @@
 package com.codeup.bookwormapp.controllers;
 
+import com.codeup.bookwormapp.repository.BookRepository;
+import com.codeup.bookwormapp.repository.ReviewRepository;
+import com.codeup.bookwormapp.repository.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class BookController {
+
+    //-- Book Repository DAO
+    private final BookRepository bookDao;
+    //-- Review Repository
+    private final ReviewRepository reviewDao;
+    //-- User Repository Dao
+    private final UserRepository userDao;
+
+    //-- Constructor for Dao
+    public BookController(BookRepository bookDao, ReviewRepository reviewDao, UserRepository userDao) {
+        this.bookDao = bookDao;
+        this.reviewDao = reviewDao;
+        this.userDao = userDao;
+    }
 
     //-- Book list
     @GetMapping("/booklist")
