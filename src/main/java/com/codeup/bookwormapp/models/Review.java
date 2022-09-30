@@ -17,7 +17,7 @@ public class Review {
     @Column(nullable = false, length = 100)
     private String reviewTitle;
 
-    @Column(length = 2500)
+    @Column(length = 1800)
     private String reviewBody;
 
 
