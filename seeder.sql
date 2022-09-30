@@ -35,4 +35,13 @@ A father and his son walk alone through burned America. Nothing moves in the rav
 The Road is the profoundly moving story of a journey. It boldly imagines a future in which no hope remains, but in which the father and his son, “each the other’s world entire,” are sustained by love. Awesome in the totality of its vision, it is an unflinching meditation on the worst and the best that we are capable of: ultimate destructiveness, desperate tenacity, and the tenderness that keeps two people alive in the face of total devastation.', 'fiction', '9780307265432', '241', 'Oct 21, 2006', '12.99', '4', 'The Road' );
 
 INSERT INTO reviews(published_date, rating, review_body, review_title, book_id, user_id) VALUES
-('2022-09-30 01:53:19', '3', 'This book was aight', 'aight', '1', '2')
+('2022-03-30 01:53:19', '3', 'This book was aight', 'aight', '1', '1'),
+('2022-06-30 06:53:19', '5', 'This book gave me the chills. Definitely worth reading even as an adult! Everyone should read this. Even you, Nicholas...', 'Greatest Book','2', '2'),
+('2022-09-30 08:53:19', '1', 'This is too scary of a book.. Do not recommend. I tried reading it as a bedtime story.. Big Regrets!', 'Too scary, not good for children', '3', '3'),
+('2022-01-29 09:53:19', '4', 'My experience with reading this book was astounding. I am only rating it a four though because of the author.', 'Great read!', '4', '4'),
+('2022-10-31 10:53:19', '2', 'I had high hopes this book since the author has been so revered. It was hard to follow and i had too much of a hard time getting through each chapter. Rating is 2 stars just to be nice.', 'Not Good Enough.', '5', '5'),
+('2022-08-30 12:53:19', '3', 'I was left with so many questions, in the end I just hope that this becomes a series otherwise its not worth the read.', 'Could be better', '6', '6'),
+('2022-04-30 11:53:19', '5', 'I am raving over this book. I have searched for the perfect read over the summer and this has uplifted my spirits!', 'The best book in the world!', '7', '7'),
+('2022-01-30 03:53:19', '1', 'If you are reading this i beg you not to read this book. Save yourself from the perils within..', 'If only I could give 0 stars...', '8', '8'),
+('2022-12-25 06:53:19', '5', 'Wow!! I love it when I read a book and it leaves me with a feel good feeling. This book will leave you at the edge of your seat but is tied up well in the ending. I recommend.', 'The Bomb.Com', '9', '9'),
+('2022-07-20 02:53:19','5', 'What isnt there to love?? I cannot wait to see what other books this author comes out with. I greatly enjoyed reading this book!', 'A Must Read', '10', '10');
