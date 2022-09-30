@@ -25,7 +25,7 @@ public class Book {
     @Column(name = "BOOK_COVER", nullable = false)
     private String bookImage;
 
-    @Column(name = "DESCRIPTION", nullable = false)
+    @Column(name = "DESCRIPTION", nullable = false, length = 1800)
     private String description;
 
     @Column(name = "GENRE", nullable = false)
@@ -35,7 +35,7 @@ public class Book {
     private long pageCount;
 
     @Column(name = "PUBLISHED_DATE", nullable = false)
-    private Timestamp publishedDate;
+    private String publishedDate;
 
     @Column(name = "RATING", nullable = true)
     private Integer rating;
@@ -55,8 +55,7 @@ public class Book {
 
 //    Constructor
 
-
-    public Book(long id, String isbn, String title, String author, String bookImage, String description, String genre, long pageCount, Timestamp publishedDate, Integer rating, String buyLink, float purhcasePrice, List<Review> reviews) {
+    public Book(long id, String isbn, String title, String author, String bookImage, String description, String genre, long pageCount, String publishedDate, Integer rating, String buyLink, float purhcasePrice, List<Review> reviews) {
         this.id = id;
         this.isbn = isbn;
         this.title = title;
@@ -72,7 +71,9 @@ public class Book {
         this.reviews = reviews;
     }
 
+
 //    Getters and Setters
+
 
     public long getId() {
         return id;
@@ -138,11 +139,11 @@ public class Book {
         this.pageCount = pageCount;
     }
 
-    public Timestamp getPublishedDate() {
+    public String getPublishedDate() {
         return publishedDate;
     }
 
-    public void setPublishedDate(Timestamp publishedDate) {
+    public void setPublishedDate(String publishedDate) {
         this.publishedDate = publishedDate;
     }
 

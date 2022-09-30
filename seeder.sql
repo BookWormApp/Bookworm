@@ -26,4 +26,13 @@ INSERT INTO users (bio, birthday, city, email, favorite_book, favorite_genre, fi
 ('funny quotes make great introductions', '1995-04-14', 'san antonio', 'whoamI@email.com', 'the dark path taken', 'mystery', 'bobby', 'gilmore', 'password', 'texas', 'happygilmore'),
 ('make great introductions', '1995-05-11','san antonio', 'wowthisiscool@email.com', 'the path', 'Romance', 'lucy', 'smith', 'password', 'texas', 'lucylu'),
 ('life is what you make it homie','1991-07-30', 'roswell', 'wildhog@email.com', 'The Road', 'Biography', 'kyle', 'lara', 'password', 'New Mexico', 'wildhog'),
-('simple reading makes life easy', '1998-04-18','new york', 'newworld@email.com', 'cat in the hat', 'adventure', 'Lucas', 'Patterson', 'password','new york', 'newworld')
+('simple reading makes life easy', '1998-04-18','new york', 'newworld@email.com', 'cat in the hat', 'adventure', 'Lucas', 'Patterson', 'password','new york', 'newworld');
+
+
+INSERT INTO book_list(author, book_cover, buy_link, description, genre, isbn, page_count, published_date, purchase_price, rating, book_title) VALUES
+('Cormac McCarthy','https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1600241424i/6288.jpg', 'https://www.goodreads.com/book/show/6288.The_Road#?ref=nav_brws', 'A searing, postapocalyptic novel destined to become Cormac McCarthy’s masterpiece.
+A father and his son walk alone through burned America. Nothing moves in the ravaged landscape save the ash on the wind. It is cold enough to crack stones, and when the snow falls it is gray. The sky is dark. Their destination is the coast, although they don’t know what, if anything, awaits them there. They have nothing; just a pistol to defend themselves against the lawless bands that stalk the road, the clothes they are wearing, a cart of scavenged food—and each other.
+The Road is the profoundly moving story of a journey. It boldly imagines a future in which no hope remains, but in which the father and his son, “each the other’s world entire,” are sustained by love. Awesome in the totality of its vision, it is an unflinching meditation on the worst and the best that we are capable of: ultimate destructiveness, desperate tenacity, and the tenderness that keeps two people alive in the face of total devastation.', 'fiction', '9780307265432', '241', 'Oct 21, 2006', '12.99', '4', 'The Road' );
+
+INSERT INTO reviews(published_date, rating, review_body, review_title, book_id, user_id) VALUES
+('2022-09-30 01:53:19', '3', 'This book was aight', 'aight', '1', '2')

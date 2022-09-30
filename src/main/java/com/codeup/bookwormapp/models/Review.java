@@ -2,6 +2,7 @@ package com.codeup.bookwormapp.models;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 
 @Entity
@@ -14,15 +15,16 @@ public class Review {
 
     private long rating;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 30)
     private String reviewTitle;
 
     @Column(length = 1800)
     private String reviewBody;
 
-
+//  Should give time the review was created *TESTING*
     @Column(name = "PUBLISHED_DATE")
-    private LocalDateTime publishedDate;
+    @Temporal(TemporalType.TIMESTAMP)
+    private java.util.Date publishedDate;
 
 
     @ManyToOne
@@ -39,16 +41,16 @@ public class Review {
 
 //    Constructor
 
-
-    public Review(Long id, long rating, String reviewTitle, String reviewBody, Book book, LocalDateTime publishedDate, User user) {
+    public Review(Long id, long rating, String reviewTitle, String reviewBody, Date publishedDate, Book book, User user) {
         this.id = id;
         this.rating = rating;
         this.reviewTitle = reviewTitle;
         this.reviewBody = reviewBody;
-        this.book = book;
         this.publishedDate = publishedDate;
+        this.book = book;
         this.user = user;
     }
+
 
 //    Getters and Setters
 
@@ -85,20 +87,20 @@ public class Review {
         this.reviewBody = reviewBody;
     }
 
+    public Date getPublishedDate() {
+        return publishedDate;
+    }
+
+    public void setPublishedDate(Date publishedDate) {
+        this.publishedDate = publishedDate;
+    }
+
     public Book getBook() {
         return book;
     }
 
     public void setBook(Book book) {
         this.book = book;
-    }
-
-    public LocalDateTime getPublishedDate() {
-        return publishedDate;
-    }
-
-    public void setPublishedDate(LocalDateTime publishedDate) {
-        this.publishedDate = publishedDate;
     }
 
     public User getUser() {
