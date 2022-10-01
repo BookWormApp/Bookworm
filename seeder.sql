@@ -140,7 +140,7 @@ The Road is the profoundly moving story of a journey. It boldly imagines a futur
    '34',
    'The Help');
 
-INSERT INTO reviews(published_date, rating, review_body, review_title, book_id, user_id) VALUES
+INSERT INTO reviews(published_date, rating, review_body, title, book_id, user_id) VALUES
 ('2022-03-30 01:53:19', '3', 'This book was aight', 'aight', '1', '1'),
 ('2022-06-30 06:53:19', '5', 'This book gave me the chills. Definitely worth reading even as an adult! Everyone should read this. Even you, Nicholas...', 'Greatest Book','2', '2'),
 ('2022-09-30 08:53:19', '1', 'This is too scary of a book.. Do not recommend. I tried reading it as a bedtime story.. Big Regrets!', 'Too scary, not good', '3', '3'),
