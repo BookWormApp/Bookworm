@@ -2,8 +2,98 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials.html :: head ('About Bookworm')"></head>
 <body>
-<nav th:replace="partials :: navbar"/>
-
-<h1>About Page</h1>
+    <!-- Navigation -->
+    <nav th:replace="partials :: navbar"/>
+    <!-- Main Section -->
+    <main>
+        <!------- Introduction ------->
+        <section class="py-5 text-center container-fluid" style="background-color: #eee;">
+                <div class="col-lg-6 py-md-5 my-md-5 col-md-8 mx-auto">
+                    <h1 class=" display-3 border-bottom border-dark pb-2">What is Bookworm?</h1>
+                    <p class="lead text-muted">Introduce yourself to the works of your favorite authors’ story-telling, or entice yourself through the opinions of other members.Introduce yourself to the works of your favorite authors’ story-telling, or entice yourself through the opinions of other members.</p>
+                    <p>
+                        <a href="/users/register.html" class="btn my-2" style="background-color:#AED666;">Create Account</a>
+                    </p>
+                </div>
+        </section>
+        <!------- About Section ------->
+        <section class="py-5" style="background-color: #F0DD9B;">
+            <!-- Title of Creators (Xs & Sm) -->
+            <h2 class="pb-2 w-50 display-5 d-md-block d-none mx-auto border-bottom border-dark">The Developers</h2>
+            <!-- Title of Creators (Md & Lg) -->
+            <h2 class="pb-2 w-75 display-5 d-md-none d-block mx-auto border-bottom border-dark">The Developers</h2>
+            <!-- Card Container -->
+            <div class="row container py-5 d-flex justify-content-center align-items-center mx-auto vw-100 h-100">
+                <!------- Start of Card for Yasmine Rico ------->
+                <div class="col-md-3 col-xl-4">
+                    <!-- Card Border -->
+                    <div class="card shadow-lg border-5" style="border:3px solid darkolivegreen">
+                        <!-- Card Body -->
+                        <div class="card-body text-center">
+                            <!-- Image Container -->
+                            <div class="mt-3 mb-4">
+                                <!-- Creator Image -->
+                                <img src="/img/yasmineRico.jpeg" class="rounded-circle img-fluid" style="width: 100px;height:110px" />
+                            </div>
+                            <!-- Title -->
+                            <h4 class="mb-2">Yasmine Rico</h4>
+                            <!-- Description -->
+                            <p class="text-muted mb-4">Software Developer</p>
+                            <!-- Social Media Buttons Container -->
+                            <div class="mb-4 pb-2">
+                                <!-- LinkedIn Button-->
+                                <a href="https://www.linkedin.com/in/yasminerico/" type="button" class="btn btn-outline-success btn-floating pl-md-2">
+                                    <i class="fa-brands fa-linkedin-in fa-lg"></i>
+                                </a>
+                                <!-- Github Button -->
+                                <a href="https://github.com/YasmineRico" type="button" class="btn btn-outline-success btn-floating pr-md-2">
+                                    <i class="fa-brands fa-github fa-lg"></i>
+                                </a>
+                            </div>
+                            <!-- Email Button -->
+                            <a href = "mailto:abc@example.com?subject = BookWorm_Contact" target="_blank" rel="noopener noreferrer" type="button" class="btn btn-success btn-rounded btn-lg">
+                                Message now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!------- Start of Card for Nicholas Gilmore ------->
+                <div class="col-md-3 col-xl-4 pt-5 pt-md-0">
+                    <!-- Card Border -->
+                    <div class="card shadow-lg border-5 " style="border:3px solid darkolivegreen">
+                        <!-- Card Body -->
+                        <div class="card-body text-center">
+                            <!-- Image Container -->
+                            <div class="mt-3 mb-4">
+                                <!-- Creator Image -->
+                                <img src="/img/NickG.jpg" class="rounded-circle img-fluid" style="width: 100px;height:110px" />
+                            </div>
+                            <!-- Title -->
+                            <h4 class="mb-2">Nicholas "Gilly" Gilmore</h4>
+                            <!-- Description -->
+                            <p class="text-muted mb-4">Software Developer</p>
+                            <!-- Social Media Buttons Container -->
+                            <div class="mb-4 pb-2">
+                                <!-- LinkedIn Button-->
+                                <a href="https://www.linkedin.com/in/heygilly/" type="button" class="btn btn-outline-success">
+                                    <i class="fa-brands fa-linkedin-in fa-lg"></i>
+                                </a>
+                                <!-- Github Button -->
+                                <a href="https://github.com/HeyGilly" type="button" class="btn btn-outline-success btn-floating">
+                                    <i class="fa-brands fa-github fa-lg"></i>
+                                </a>
+                            </div>
+                            <!-- Email Button -->
+                            <a href = "mailto:nick.gilmore20@gmail.com?subject = BookWorm_Contact" target="_blank" rel="noopener noreferrer" type="button" class="btn btn-success btn-rounded btn-lg">
+                                Message now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!------- Footer------->
+    <footer th:replace="partials :: footer"></footer>
 </body>
 </html>
