@@ -16,7 +16,7 @@ public class Review {
     private long rating;
 
     @Column(nullable = false, length = 30)
-    private String reviewTitle;
+    private String title;
 
     @Column(length = 1800)
     private String reviewBody;
@@ -41,19 +41,18 @@ public class Review {
 
 //    Constructor
 
-    public Review(Long id, long rating, String reviewTitle, String reviewBody, Date publishedDate, Book book, User user) {
+
+    public Review(Long id, long rating, String title, String reviewBody, Date publishedDate, Book book, User user) {
         this.id = id;
         this.rating = rating;
-        this.reviewTitle = reviewTitle;
+        this.title = title;
         this.reviewBody = reviewBody;
         this.publishedDate = publishedDate;
         this.book = book;
         this.user = user;
     }
 
-
 //    Getters and Setters
-
 
     public Long getId() {
         return id;
@@ -71,12 +70,12 @@ public class Review {
         this.rating = rating;
     }
 
-    public String getReviewTitle() {
-        return reviewTitle;
+    public String getTitle() {
+        return title;
     }
 
-    public void setReviewTitle(String reviewTitle) {
-        this.reviewTitle = reviewTitle;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getReviewBody() {

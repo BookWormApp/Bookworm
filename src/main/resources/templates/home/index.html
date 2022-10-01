@@ -29,6 +29,13 @@
 			</div>
 		</div>
 
+		<div th:each="book: ${books}" th:unless="${bookStat.index > 5}">
+			<h1 th:text="${book.title}">Title</h1>
+		</div>
+		<div th:each="review: ${reviews}" th:unless="${reviewStat.index > 5}">
+			<h2 th:text="${review.title}">Title</h2>
+		</div>
+
 
 	</main>
 	<footer th:replace="partials :: footer"></footer>
