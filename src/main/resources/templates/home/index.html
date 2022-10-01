@@ -35,7 +35,7 @@
 				<!-- Title -->
 				<h2 class="pb-2 w-50 display-5 mx-auto border-bottom">Best Seller</h2>
 				<!-- Container of Books -->
-				<div class="row row-cols-1 row-cols-md-4 flex-nowrap py-5 container-fluid mx-auto" style="width: 100%;overflow-x: scroll !important;">
+				<div class="row row-cols-1 row-cols-md-3 flex-nowrap py-5 container-fluid mx-auto" style="width: 100%;overflow-x: scroll !important;">
 					<!-- Start of the Books -->
 					<div class="col" th:each="book: ${books}" th:unless="${bookStat.index > 5}">
 						<!-- Image Background -->
@@ -59,9 +59,7 @@
 			</section>
 		</div>
 
-<!--		<div th:each="book: ${books}" th:unless="${bookStat.index > 5}">
-			<h1 th:text="${book.title}">Title</h1>
-		</div>
+<!--
 		<div th:each="review: ${reviews}" th:unless="${reviewStat.index > 5}">
 			<h2 th:text="${review.title}">Title</h2>
 		</div>
