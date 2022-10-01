@@ -7,15 +7,15 @@
 	<main class="p-0 m-0">
 
 		<!--Introduction-->
-		<div class="py-5 text-center bg-warning">
+		<div class="py-5 my-0 text-center bg-warning">
 			<!--Small Logo-->
-			<img class="d-block d-md-none mx-auto p-0 my-0" src="/img/logo.png" alt="BookWorm Logo">
+			<img class="d-block d-md-none mx-auto p-0 my-0" src="/img/logo.png" th:width="140" alt="BookWorm Logo">
 			<!--Med & up Logo-->
-			<img class="d-none d-md-block mx-auto my-4" src="/img/logo_Large.png" alt="BookWorm Logo">
+			<img class="d-none d-md-block mx-auto p-0 my-0" src="/img/logo_Large.png" th:width="280" alt="BookWorm Logo">
 			<!--Title of Application (XS & SMALL)-->
-			<h1 class="display-3 fw-bold d-block d-md-none">Bookworm</h1>
+			<h1 class="display-3 fw-bold d-block d-md-none p-1">Bookworm</h1>
 			<!--Title of Application (MED & UP)-->
-			<h1 class="display-3  mx-auto px-5 d-none d-md-block">Find over 20 million books in <br><span class="fw-bold"> Book Worm</span></h1>
+			<h1 class="display-3 mx-auto px-5 d-none d-md-block">Find over 20 million books in <br><span class="fw-bold"> Book Worm</span></h1>
 			<!--Hr Line-->
 			<hr class="w-50 mx-auto mb-2" style="border: black solid 3px;background-color: black;">
 			<!-- Description & Button Section -->
@@ -25,17 +25,47 @@
 				<!--Description (MD & UP)-->
 				<p class="lead mb-4 d-none d-md-block">BookWorm was created to give users an option to not only search and view books they would like to read but to also inspire other avid readers. This is possible by allowing registered users to leave reviews, retrieve recommendations based on liked books and follow other users profiles.</p>
 				<!--Button for creating an account-->
-				<button type="button" class="btn btn-success btn-lg px-4 gap-3">Primary button</button>
+				<button type="button" class="btn btn-lg px-4 gap-3" style="background-color:#AED666;">Primary button</button>
 			</div>
 		</div>
 
-		<div th:each="book: ${books}" th:unless="${bookStat.index > 5}">
+		<!-- Best Seller Section -->
+		<div class="py-5 text-center container-fluid" style="background-color:#F0DD9B;" >
+			<section>
+				<!-- Title -->
+				<h2 class="pb-2 w-50 display-5 mx-auto border-bottom">Best Seller</h2>
+				<!-- Container of Books -->
+				<div class="row row-cols-1 row-cols-md-4 flex-nowrap py-5 container-fluid mx-auto" style="width: 100%;overflow-x: scroll !important;">
+					<!-- Start of the Books -->
+					<div class="col" th:each="book: ${books}" th:unless="${bookStat.index > 5}">
+						<!-- Image Background -->
+						<div class="text-white card card-cover h-100 py-5 overflow-hidden rounded-5 shadow-lg" th:style="'background-image:url(' + ${book.bookImage}+ ');background-size: cover;'" >
+							<div class="w-75 mx-auto rounded-3"style="background-color:#AED666;">
+								<!-- Title of Book -->
+								<h3 class="" th:text="${book.title}">Fake Book Title</h3>
+								<p class="mb-5">By <span th:text="${book.author}">Fake Author</span></p>
+							</div>
+								<!-- Bottom Content Container -->
+								<ul class="d-flex list-unstyled container mt-auto">
+									<li class="me-auto rounded-circle p-4" style="background-color:#AED666;">
+										<h5><i class="fa-solid fa-star"></i> <span th:text="${book.rating}">rating</span></h5>
+									</li>
+									<li class="d-flex align-items-center rounded-circle p-3" style="background-color:#AED666;">
+										<h5 th:text="${book.genre}">Genre</h5>
+									</li>
+								</ul>
+						</div>
+				</div>
+			</section>
+		</div>
+
+<!--		<div th:each="book: ${books}" th:unless="${bookStat.index > 5}">
 			<h1 th:text="${book.title}">Title</h1>
 		</div>
 		<div th:each="review: ${reviews}" th:unless="${reviewStat.index > 5}">
 			<h2 th:text="${review.title}">Title</h2>
 		</div>
-
+-->
 
 	</main>
 	<footer th:replace="partials :: footer"></footer>
