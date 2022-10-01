@@ -22,14 +22,37 @@
 </head>
 
 
-<nav th:fragment="navbar">
-	<nav class="navbar bg-light">
-		<div class="container">
-			<a class="navbar-brand" href="#">
-				<img src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="Bootstrap" width="30" height="24">
-			</a>
+	<!--	Navbar Fragment     -->
+<nav th:fragment="navbar" class="navbar navbar-expand-lg sticky-top shadow" style="background-color:#F0DD9B;" >
+	<div class="container">
+		<!--		Logo link-->
+		<a class="navbar-brand col-8" href="/">
+			<img src="../img/logo.png" alt="" width="80" height="70"></a>
+
+		<!--		Navbar Toggler Button for Mobile View-->
+		<button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<!--		Navbar Collapse class tells which items should be in the dropdown of toggler -->
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<!--			Navbar links-->
+			<div class="navbar-nav d-flex justify-content-around col-11">
+				<a class="nav-link link-dark" aria-current="page" href="/about">
+					<i class="fa-solid fa-star fa-lg"></i>
+				</a>
+				<a class="nav-link link-dark" href="/login">
+					<i class="fa-solid fa-arrow-right-to-bracket fa-lg"></i>
+				</a>
+				<a class="nav-link link-dark" href="/register">
+					<button class="btn me-2" type="button" href="/register" style="background-color:#AED666;">Create Account</button>
+				</a>
+			</div>
 		</div>
-	</nav>
+	</div>
 </nav>
+
+
+
+
 
 
