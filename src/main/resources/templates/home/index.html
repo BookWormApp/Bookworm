@@ -33,17 +33,17 @@
 		<div class="py-5 text-center container-fluid" style="background-color:#F0DD9B;" >
 			<section>
 				<!-- Title -->
-				<h2 class="pb-2 w-50 display-5 mx-auto border-bottom">Best Seller</h2>
+				<h2 class="pb-2 w-50 display-5 mx-auto border-bottom border-dark">Best Seller</h2>
 				<!-- Container of Books -->
 				<div class="row row-cols-1 row-cols-md-3 flex-nowrap py-5 container-fluid mx-auto" style="width: 100%;overflow-x: scroll !important;">
 					<!-- Start of the Books -->
 					<div class="col" th:each="book: ${books}" th:unless="${bookStat.index > 5}">
 						<!-- Image Background -->
 						<div class="text-white card card-cover h-100 py-5 overflow-hidden rounded-5 shadow-lg" th:style="'background-image:url(' + ${book.bookImage}+ ');background-size: cover;'" >
-							<div class="w-75 mx-auto rounded-3"style="background-color:#AED666;">
+							<div class="w-75 mb-4 mx-auto rounded-3"style="background-color:#AED666;">
 								<!-- Title of Book -->
 								<h5 class="pt-3" th:text="${book.title}">Fake Book Title</h5>
-								<p class="mb-5">By <span th:text="${book.author}">Fake Author</span></p>
+								<p class="mb-3">By <span th:text="${book.author}">Fake Author</span></p>
 							</div>
 								<!-- Bottom Content Container -->
 								<ul class="d-flex list-unstyled container mt-auto">
