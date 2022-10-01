@@ -152,4 +152,26 @@ INSERT INTO reviews(published_date, rating, review_body, review_title, book_id, 
 ('2022-12-25 06:53:19', '5', 'Wow!! I love it when I read a book and it leaves me with a feel good feeling. This book will leave you at the edge of your seat but is tied up well in the ending. I recommend.', 'The Bomb.Com', '9', '9'),
 ('2022-07-20 02:53:19','5', 'What isnt there to love?? I cannot wait to see what other books this author comes out with. I greatly enjoyed reading this book!', 'A Must Read', '10', '10');
 
+INSERT INTO liked_books (book_id, user_id) VALUES
+('1', '2'),
+('2','3'),
+('3', '6'),
+('4', '7'),
+('5', '1'),
+('6', '4'),
+('7', '8'),
+('8', '10'),
+('9', '5'),
+('10', '9'),
+('10', '5'),
+('2','6'),
+('3', '8'),
+('4', '10'),
+('5', '2'),
+('6', '1'),
+('7', '4'),
+('8', '7'),
+('9', '9'),
+('1', '3');
+
 
