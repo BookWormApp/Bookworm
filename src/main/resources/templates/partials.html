@@ -52,7 +52,58 @@
 	</div>
 </nav>
 
-<footer class="footer sticky-bottom container-fluid" style="background-color:#D9D9D9" th:fragment="footer">
+
+<!--	Navbar Fragment -- User View     -->
+<nav th:fragment="navbar-user" class="navbar navbar-expand-lg navbar-expand-md sticky-top shadow" style="background-color:#F0DD9B;" >
+	<div class="container no-wrap">
+		<!--		Logo link-->
+		<a class="navbar-brand col-5" href="/">
+			<img src="../img/logo.png" class="pl-5" alt="Bookworm Logo" width="80" height="70">
+		</a>
+		<!--Navbar Toggler button -->
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<!--Div contains all items that should be in the toggle button when collapsed-->
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<!--Search form-->
+			<form class="d-flex" role="search">
+				<button class="btn btn-sm" style="background-color:#3D3D3D";   type="submit">
+					<i class="fa-solid fa-magnifying-glass" style="color: #AED666"></i>
+				</button>
+				<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+			</form>
+<!--			Navbar Links-->
+			<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+				<li class="nav-item">
+					<a class="nav-link link-dark mt-2" aria-current="page" href="/welcomePage">
+						<i class="fa-solid fa-house fa-lg"></i>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link link-dark mt-2" href="/profile">
+						<i class="fa-solid fa-user fa-lg"></i>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link link-dark mt-2" aria-current="page" href="/about">
+						<i class="fa-solid fa-star fa-lg"></i>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link link-dark mt-2" aria-current="page" href="/singleBook">
+						<i class="fa-solid fa-book-open-reader fa-lg"></i>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+
+
+
+<footer class="footer fixed container-fluid" style="background-color:#D9D9D9" th:fragment="footer">
 	<div class="container w-100 text-center p-1">
 		<span class="text-muted">Created by: W.A.H.F.B.B.W.L.T.P</span>
 	</div>
