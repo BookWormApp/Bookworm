@@ -1,9 +1,35 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head th:replace="partials.html :: head ('Welcome to BookWorm')"></head>
 <body>
 	<nav th:replace="partials :: navbar"/>
-<h1>Home Page Welcome </h1>
 
+	<main class="p-0 m-0">
+
+		<!--Introduction-->
+		<div class="py-5 text-center bg-warning">
+			<!--Small Logo-->
+			<img class="d-block d-md-none mx-auto p-0 my-0" src="/img/logo.png" alt="BookWorm Logo">
+			<!--Med & up Logo-->
+			<img class="d-none d-md-block mx-auto my-4" src="/img/logo_Large.png" alt="BookWorm Logo">
+			<!--Title of Application (XS & SMALL)-->
+			<h1 class="display-3 fw-bold d-block d-md-none">Bookworm</h1>
+			<!--Title of Application (MED & UP)-->
+			<h1 class="display-3  mx-auto px-5 d-none d-md-block">Find over 20 million books in <br><span class="fw-bold"> Book Worm</span></h1>
+			<!--Hr Line-->
+			<hr class="w-50 mx-auto mb-2" style="border: black solid 3px;background-color: black;">
+			<!-- Description & Button Section -->
+			<div class="col-lg-6 mx-auto">
+				<!--Description (XS & SM)-->
+				<p class="lead mb-4 d-block d-md-none">a bookworm will always rule the world... right after this chapter</p>
+				<!--Description (MD & UP)-->
+				<p class="lead mb-4 d-none d-md-block">BookWorm was created to give users an option to not only search and view books they would like to read but to also inspire other avid readers. This is possible by allowing registered users to leave reviews, retrieve recommendations based on liked books and follow other users profiles.</p>
+				<!--Button for creating an account-->
+				<button type="button" class="btn btn-success btn-lg px-4 gap-3">Primary button</button>
+			</div>
+		</div>
+
+
+	</main>
 </body>
 </html>
