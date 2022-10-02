@@ -98,7 +98,7 @@
 		</div>
 		<div class="container-fluid mx-auto row w-100 flex-nowrap scrollbar scrollbar-primary py-5" style="width: 100%;overflow-x: scroll !important;">
 			<!-- Start of Review Cards -->
-			<div class="card p-0 m-0 mx-2" style="max-width: 540px;" th:each="review: ${reviews}" th:unless="${reviewStat.index > 8}">
+			<div class="card p-0 m-0 mx-2" style="max-width: 540px;!important;" th:each="review: ${reviews}" th:unless="${reviewStat.index > 8}">
 				<!-- Container -->
 				<div class="row g-0">
 					<!-- Container Image - large -->
@@ -110,22 +110,33 @@
 					<!-- Body Container -->
 					<div class="col-md-8 position-relative">
 						<!-- Badge Rating -->
-						<div class="badge bg-success text-wrap position-absolute top-0 end-0 fw-bold mt-2 mx-2" style="width: 6rem;font-size:14px;">
+						<div class="badge bg-success text-wrap position-absolute bottom-0 end-0 fw-bold mb-5 mx-2" style="width: 6rem;font-size:14px;">
 							<i class="fa-solid fa-star"></i> <span th:text="${review.rating}">4</span>
 						</div>
 						<!-- Card Body -->
-						<div class="card-body mt-3">
-							<a href="/register" class="link-success fw-bold">
-								<p class=" text-capitalize">@<span th:text="${review.user.username}">Title</span></p>
-							</a>
+						<div class="card-body">
+							<!-- Username and Profile Image - small -->
+							<div class=" row d-block d-md-none position-absolute top-0 start-0" style="margin-top:-90px;margin-left:20px">
+								<a href="/register" class="link-light p-0 m-0 text-decoration-none col-12">
+									<p class=" text-capitalize rounded-pill px-2 mt-2 fw-bold bg-success text-nowrap">@<span th:text="${review.user.username}">Username</span></p>
+								</a>
+								<img  th:src="${review.user.profilePhoto}" th:if="${review.user.profilePhoto != null}" class="rounded-circle border border-3 border-success p-0 col-7" height="70px" width="70px" style=""/>
+							</div>
+							<!-- Username and Profile Image - Large -->
+							<div class=" row d-none d-md-block position-absolute top-0 end-0" style="margin-right:20px">
+								<img  th:src="${review.user.profilePhoto}" th:if="${review.user.profilePhoto != null}" class="rounded-circle border border-3 border-success p-0 col-7" height="70px" width="70px" style="margin-top:-40px;margin-left:20px;"/>
+								<a href="/register" class="link-light p-0 m-0  text-decoration-none col-12">
+									<p class=" text-capitalize rounded-pill px-2 mt-2 fw-bold bg-success text-nowrap">@<span th:text="${review.user.username}">Username</span></p>
+								</a>
+							</div>
 							<!-- Card Title -->
-							<h5 class="card-title text-capitalize" th:text="${review.title}">Title</h5>
+							<h5 class="card-title text-capitalize mt-3" th:text="${review.title}">Title</h5>
 							<!-- Card Text -->
-							<p class="card-text overflow-scroll mb-4" th:text="${review.reviewBody}" style="height:8em;">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+							<p class="card-text overflow-scroll mt-2 mb-4" th:text="${review.reviewBody}" style="height:6em;">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
 							<!-- Card Footer -->
 							<div class="card-footer mt-2 position-absolute bottom-0 end-0 w-100">
 								<!-- Footer Text -->
-								<small class="text-muted" th:text="${review.publishedDate}">2009-06-24 12:40:00 AM</small>
+								<small class="text-muted " th:text="${review.publishedDate}">2009-06-24 12:40:00 AM</small>
 							</div>
 						</div>
 					</div>
