@@ -80,10 +80,52 @@
 		</div>
 
 <!--
-		<div th:each="review: ${reviews}" th:unless="${reviewStat.index > 5}">
+		<div th:each="review: ${reviews}" th:unless="${reviewStat.index > 8}">
 			<h2 th:text="${review.title}">Title</h2>
 		</div>
 -->
+
+
+	<!-- Review Section -->
+	<section class="py-5 bg-warning ">
+		<!-- Section Title -->
+		<h2 class="w-50 display-5 mx-auto border-bottom border-dark mb-5">Bookworm's Reviews</h2>
+		<div class="container-fluid mx-auto row w-100 flex-nowrap scrollbar scrollbar-primary py-5 border border-5" th:each="review: ${reviews}" th:unless="${reviewStat.index > 8}" style="width: 100%;overflow-x: scroll !important;">
+			<!-- Start of Review Cards -->
+			<div class="card p-0 m-0 mx-2" style="max-width: 540px;">
+				<!-- Container -->
+				<div class="row g-0">
+					<!-- Container Image -->
+					<div class="col-md-4">
+						<!-- Image -->
+<!--						<img th:src="${review.bookImage}" class="img-fluid rounded-start" alt="...">-->
+					</div>
+					<!-- Body Container -->
+					<div class="col-md-8 position-relative">
+						<!-- Badge Rating -->
+						<div class="badge bg-success text-wrap position-absolute top-0 end-0 fw-bold mt-2 mx-2" style="width: 6rem;font-size:14px;">
+							<i class="fa-solid fa-star"></i> <span th:text="${review.rating}">4</span>
+						</div>
+						<!-- Card Body -->
+						<div class="card-body">
+							<p class=" text-capitalize" th:text="${review.userName}">Title</p>
+							<!-- Card Title -->
+							<h5 class="card-title text-capitalize" th:text="${review.title}">Title</h5>
+							<!-- Card Text -->
+							<p class="card-text overflow-scroll" th:text="${review.reviewBody}" style="height:8em;">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+							<!-- Card Footer -->
+							<div class="card-footer position-absolute bottom-0 end-0 w-100">
+								<!-- Footer Text -->
+								<small class="text-muted" th:text="${review.publishedDate}">2009-06-24 12:40:00 AM</small>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
 
 	</main>
 	<footer th:replace="partials :: footer"></footer>
