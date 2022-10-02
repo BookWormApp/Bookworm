@@ -32,81 +32,55 @@ public class Review {
     private Book book;
 
     @ManyToOne
+    @JoinColumn(name = "book_image")
+    private Book bookImage;
+
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    //    Empty Constructor
-    public Review() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "username")
+    private User username;
 
-//    Constructor
-
-
-    public Review(Long id, long rating, String title, String reviewBody, Date publishedDate, Book book, User user) {
+    //--Constructor
+    public Review(Long id, long rating, String title, String reviewBody, Date publishedDate, Book book, Book bookImage, User user, User username) {
         this.id = id;
         this.rating = rating;
         this.title = title;
         this.reviewBody = reviewBody;
         this.publishedDate = publishedDate;
         this.book = book;
+        this.bookImage = bookImage;
         this.user = user;
+        this.username = username;
     }
 
-//    Getters and Setters
+    //-- Getter & Setters
+    public Long getId() {return id;}
+    public void setId(Long id) {this.id = id;}
 
-    public Long getId() {
-        return id;
-    }
+    public long getRating() {return rating;}
+    public void setRating(long rating) {this.rating = rating;}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public String getTitle() {return title;}
+    public void setTitle(String title) {this.title = title;}
 
-    public long getRating() {
-        return rating;
-    }
+    public String getReviewBody() {return reviewBody;}
+    public void setReviewBody(String reviewBody) {this.reviewBody = reviewBody;}
 
-    public void setRating(long rating) {
-        this.rating = rating;
-    }
+    public Date getPublishedDate() {return publishedDate;}
+    public void setPublishedDate(Date publishedDate) {this.publishedDate = publishedDate;}
 
-    public String getTitle() {
-        return title;
-    }
+    public Book getBook() {return book;}
+    public void setBook(Book book) {this.book = book;}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    public Book getBookImage() {return bookImage;}
+    public void setBookImage(Book bookImage) {this.bookImage = bookImage;}
 
-    public String getReviewBody() {
-        return reviewBody;
-    }
+    public User getUser() {return user;}
+    public void setUser(User user) {this.user = user;}
 
-    public void setReviewBody(String reviewBody) {
-        this.reviewBody = reviewBody;
-    }
-
-    public Date getPublishedDate() {
-        return publishedDate;
-    }
-
-    public void setPublishedDate(Date publishedDate) {
-        this.publishedDate = publishedDate;
-    }
-
-    public Book getBook() {
-        return book;
-    }
-
-    public void setBook(Book book) {
-        this.book = book;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+    public User getUsername() {return username;}
+    public void setUsername(User username) {this.username = username;}
 }
