@@ -137,7 +137,7 @@ The Road is the profoundly moving story of a journey. It boldly imagines a futur
    '464',
    'February 10, 2009',
    '15.99',
-   '34',
+   '4',
    'The Help');
 
 INSERT INTO reviews(published_date, rating, review_body, title, book_id, user_id) VALUES
