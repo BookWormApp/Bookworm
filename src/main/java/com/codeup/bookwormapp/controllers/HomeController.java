@@ -2,6 +2,7 @@ package com.codeup.bookwormapp.controllers;
 
 import com.codeup.bookwormapp.repository.BookRepository;
 import com.codeup.bookwormapp.repository.ReviewRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +25,7 @@ public class HomeController {
     //-- Index Page
     @GetMapping("/")
     public String index(Model model){
-        model.addAttribute("books", bookDao.findAll());
+        model.addAttribute("books", bookDao.findAll(Sort.by("rating").descending()));
         model.addAttribute("reviews", reviewDao.findAll());
         return "home/index";
     }
