@@ -95,10 +95,11 @@
 			<div class="card p-0 m-0 mx-2" style="max-width: 540px;" th:each="review: ${reviews}" th:unless="${reviewStat.index > 8}">
 				<!-- Container -->
 				<div class="row g-0">
-					<!-- Container Image -->
+					<!-- Container Image - large -->
 					<div class="col-md-4">
 						<!-- Image -->
-						<img th:src="${review.book.bookImage}" class=" p-0 m-0 img-fluid rounded-start" alt="${review.book.title}" style="height:250px!important;width:12em;">
+						<img th:src="${review.book.bookImage}" class=" img-fluid rounded-start d-none d-md-block" alt="${review.book.title}" style="height:250px!important;width:12em;">
+						<img th:src="${review.book.bookImage}" class=" img-fluid rounded-top d-block d-md-none border-rounded" alt="${review.book.title}" style="height:250px!important;width:20em;">
 					</div>
 					<!-- Body Container -->
 					<div class="col-md-8 position-relative">
@@ -114,9 +115,9 @@
 							<!-- Card Title -->
 							<h5 class="card-title text-capitalize" th:text="${review.title}">Title</h5>
 							<!-- Card Text -->
-							<p class="card-text overflow-scroll" th:text="${review.reviewBody}" style="height:8em;">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+							<p class="card-text overflow-scroll mb-4" th:text="${review.reviewBody}" style="height:8em;">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
 							<!-- Card Footer -->
-							<div class="card-footer position-absolute bottom-0 end-0 w-100">
+							<div class="card-footer mt-2 position-absolute bottom-0 end-0 w-100">
 								<!-- Footer Text -->
 								<small class="text-muted" th:text="${review.publishedDate}">2009-06-24 12:40:00 AM</small>
 							</div>
