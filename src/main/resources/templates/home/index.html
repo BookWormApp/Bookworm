@@ -87,18 +87,18 @@
 
 
 	<!-- Review Section -->
-	<section class="py-5 bg-warning ">
+	<section class="py-5" style="background-color:#F0DD9B;">
 		<!-- Section Title -->
 		<h2 class="w-50 display-5 mx-auto border-bottom border-dark mb-5">Bookworm's Reviews</h2>
-		<div class="container-fluid mx-auto row w-100 flex-nowrap scrollbar scrollbar-primary py-5 border border-5" th:each="review: ${reviews}" th:unless="${reviewStat.index > 8}" style="width: 100%;overflow-x: scroll !important;">
+		<div class="container-fluid mx-auto row w-100 flex-nowrap scrollbar scrollbar-primary py-5" style="width: 100%;overflow-x: scroll !important;">
 			<!-- Start of Review Cards -->
-			<div class="card p-0 m-0 mx-2" style="max-width: 540px;">
+			<div class="card p-0 m-0 mx-2" style="max-width: 540px;" th:each="review: ${reviews}" th:unless="${reviewStat.index > 8}">
 				<!-- Container -->
 				<div class="row g-0">
 					<!-- Container Image -->
 					<div class="col-md-4">
 						<!-- Image -->
-<!--						<img th:src="${review.bookImage}" class="img-fluid rounded-start" alt="...">-->
+						<img th:src="${review.book.bookImage}" class=" p-0 m-0 img-fluid rounded-start" alt="${review.book.title}" style="height:250px!important;width:12em;">
 					</div>
 					<!-- Body Container -->
 					<div class="col-md-8 position-relative">
@@ -108,7 +108,9 @@
 						</div>
 						<!-- Card Body -->
 						<div class="card-body">
-							<p class=" text-capitalize" th:text="${review.userName}">Title</p>
+							<a href="/users/register" class="link-success fw-bold">
+								<p class=" text-capitalize">@<span th:text="${review.user.username}">Title</span></p>
+							</a>
 							<!-- Card Title -->
 							<h5 class="card-title text-capitalize" th:text="${review.title}">Title</h5>
 							<!-- Card Text -->
