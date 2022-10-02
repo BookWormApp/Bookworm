@@ -27,6 +27,7 @@ public class HomeController {
     public String index(Model model){
         model.addAttribute("books", bookDao.findAll(Sort.by("rating").descending()));
         model.addAttribute("reviews", reviewDao.findAll());
+        model.addAttribute("book", bookDao.findAll(Sort.by("genre").descending()));
         return "home/index";
     }
 
