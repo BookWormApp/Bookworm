@@ -3,7 +3,9 @@ package com.codeup.bookwormapp.controllers;
 import com.codeup.bookwormapp.repository.BookRepository;
 import com.codeup.bookwormapp.repository.ReviewRepository;
 import com.codeup.bookwormapp.repository.UserRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -31,7 +33,8 @@ public class BookController {
 
     //-- Welcome Page
     @GetMapping("/welcomePage")
-    public String welcomePage(){
+    public String welcomePage(Model model){
+        model.addAttribute("book1", bookDao.findAll(Sort.by("rating").descending()));
         return "main/welcomePage";
     }
 
