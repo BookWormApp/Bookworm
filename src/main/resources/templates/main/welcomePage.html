@@ -2,10 +2,39 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials.html :: head ('Main Page')"></head>
 <body>
+<!-- Navigation -->
 <nav th:replace="partials :: navbar-user"/>
 
-<H1>Welcome to the main Page</H1>
 
+<!-- Introduction Section -->
+<div class="container-fluid p-0 m-0" style="background-image: url('/img/spookyBackground.jpg');background-size: cover;background-position: center;">
+    <div class="container-fluid py-5 bg-dark bg-dark vw-100 bg-opacity-75">
+        <!-- Intro Container -->
+        <div class="row p-4 container align-items-center mx-auto">
+            <!-- columns -->
+            <div class="col-lg-7 p-3 text-danger rounded-4 p-lg-5 pt-lg-3">
+                <!-- Image SMall View -->
+                <img class="d-block d-md-none" src="/img/it.png" alt="Spooky Season" width="auto" height="220">
+                <!-- Title -->
+                <h1 class="display-1 mb-4 fw-bold lh-1 text-decoration-underline">Spooky Season</h1>
+                <!-- Boot Title -->
+                <h3 class="fw-bold text-white d-inline mx-2">It</h3><p class="d-inline text-white">by Stephen King</p>
+                <!-- Lead Body -->
+                <p class="lead mt-2 lh-sm text-white px-1 px-md-3">They were seven teenagers when they first stumbled upon the horror. Now they are grown-up men and women who have gone out into the big world to gain success and happiness. But none of them can withstand the force that has drawn them back to Derry to face the nightmare without an end, and the evil without a name.</p>
+                <!-- Button Container -->
+                <div class="d-grid gap-2 mt-5 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+                    <!-- Button -->
+                    <button type="button" class="btn btn-lg px-4 me-md-2 fw-bold" style="background-color:#AED666;">Read more</button>
+                </div>
+            </div>
+            <!-- Image Container -->
+            <div class="col-lg-4 offset-lg-1 py-md-5 d-none d-md-block overflow-hidden">
+                <!-- Image -->
+                <img class="d-none d-md-block" src="/img/it.png" alt="Spooky Season" width="auto" height="620">
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
