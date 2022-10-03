@@ -35,6 +35,8 @@ public class BookController {
     @GetMapping("/welcomePage")
     public String welcomePage(Model model){
         model.addAttribute("book1", bookDao.findAll(Sort.by("rating").descending()));
+        model.addAttribute("reviews", reviewDao.findAll(Sort.by("publishedDate").descending()));
+
         return "main/welcomePage";
     }
 
