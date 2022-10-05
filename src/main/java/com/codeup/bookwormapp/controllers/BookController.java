@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class BookController {
 
     //-- Book Repository DAO
-    private final BookRepository bookDao;
+    private BookRepository bookDao;
     //-- Review Repository
     private final ReviewRepository reviewDao;
     //-- User Repository Dao
@@ -35,8 +35,8 @@ public class BookController {
     @GetMapping("/welcomePage")
     public String welcomePage(Model model){
         model.addAttribute("book1", bookDao.findAll(Sort.by("rating").descending()));
-        model.addAttribute("reviews", reviewDao.findAll(Sort.by("publishedDate").descending()));
-
+        model.addAttribute("reviews", reviewDao.findAll(Sort.by("publishedDate")));
+        model.addAttribute("bookGenre",bookDao.findAll());
         return "main/welcomePage";
     }
 
