@@ -10,60 +10,67 @@ import java.time.LocalDate;
 public class User {
 
     @Id
-    @Column(name = "USER_ID", nullable= false)
+    @Column(name = "USER_ID", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name="EMAIL", unique = true, nullable = false)
+    @Column(name = "EMAIL", unique = true, nullable = false)
     private String email;
 
     @Column(name = "FIRST_NAME", nullable = false)
     private String firstName;
 
-    @Column (name = "LAST_NAME", nullable=false)
+    @Column(name = "LAST_NAME", nullable = false)
     private String lastName;
 
-    @Column(name="USERNAME", nullable = false,unique = true, length = 16)
+    @Column(name = "USERNAME", nullable = false, unique = true, length = 16)
     private String username;
 
-    @Column(name="PASSWORD", nullable = false, length = 100)
+    @Column(name = "PASSWORD", nullable = false, length = 100)
     private String password;
 
     @Column(name = "BIRTHDAY", nullable = false)
     private LocalDate birthday;
 
-    @Column (name="FAVORITE_BOOK")
+    @Column(name = "FAVORITE_BOOK")
     private String favoriteBook;
 
-    @Column (name="CITY", nullable = false)
+    @Column(name = "CITY", nullable = false)
     private String city;
 
     @Column(name = "STATE", nullable = false)
     private String state;
 
-    @Column(name = "BIO",length = 50)
+    @Column(name = "BIO", length = 50)
     private String bio;
 
     @Column(name = "FAVORITE_GENRE")
     private String favoriteGenre;
 
-//LOOK UP MORE INFORMATION for data type************
+    //LOOK UP MORE INFORMATION for data type************
     @Column(name = "PROFILE_PHOTO", nullable = true)
     private String profilePhoto;
 
-    @Column(name="SOCIAL_MEDIA")
-    private String socialMedia;
+    @Column(name = "FACEBOOK")
+    private String facebook;
+
+    @Column(name = "TWITTER")
+    private String twitter;
+
+    @Column(name = "INSTAGRAM")
+    private String instagram;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Review> reviews;
 
-//    Empty Constructor
-    public User(){
+    //    Empty Constructor
+    public User() {
     }
 
 //    Constructor
 
-    public User(long id, String email, String firstName, String lastName, String username, String password, LocalDate birthday, String favoriteBook, String city, String state, String bio, String favoriteGenre, String profilePhoto, String socialMedia, List<Review> reviews) {
+
+    public User(long id, String email, String firstName, String lastName, String username, String password, LocalDate birthday, String favoriteBook, String city, String state, String bio, String favoriteGenre, String profilePhoto, String facebook, String twitter, String instagram, List<Review> reviews) {
         this.id = id;
         this.email = email;
         this.firstName = firstName;
@@ -77,9 +84,13 @@ public class User {
         this.bio = bio;
         this.favoriteGenre = favoriteGenre;
         this.profilePhoto = profilePhoto;
-        this.socialMedia = socialMedia;
+        this.facebook = facebook;
+        this.twitter = twitter;
+        this.instagram = instagram;
         this.reviews = reviews;
     }
+
+//    Setters and Getters
 
     public long getId() {
         return id;
@@ -185,12 +196,28 @@ public class User {
         this.profilePhoto = profilePhoto;
     }
 
-    public String getSocialMedia() {
-        return socialMedia;
+    public String getFacebook() {
+        return facebook;
     }
 
-    public void setSocialMedia(String socialMedia) {
-        this.socialMedia = socialMedia;
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
+    }
+
+    public String getTwitter() {
+        return twitter;
+    }
+
+    public void setTwitter(String twitter) {
+        this.twitter = twitter;
+    }
+
+    public String getInstagram() {
+        return instagram;
+    }
+
+    public void setInstagram(String instagram) {
+        this.instagram = instagram;
     }
 
     public List<Review> getReviews() {
