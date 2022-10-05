@@ -10,4 +10,8 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 //    Lists all books
     List<Book> findAll();
 
+
+    //-- List of all the horror books
+    List<Book> findAllByGenre(String horror);
+
 }

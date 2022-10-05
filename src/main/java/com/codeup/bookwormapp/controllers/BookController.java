@@ -1,5 +1,6 @@
 package com.codeup.bookwormapp.controllers;
 
+import com.codeup.bookwormapp.models.Book;
 import com.codeup.bookwormapp.repository.BookRepository;
 import com.codeup.bookwormapp.repository.ReviewRepository;
 import com.codeup.bookwormapp.repository.UserRepository;
@@ -7,6 +8,12 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.thymeleaf.expression.Lists;
+import org.thymeleaf.expression.Sets;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
 
 @Controller
 public class BookController {
@@ -37,6 +44,7 @@ public class BookController {
         model.addAttribute("book1", bookDao.findAll(Sort.by("rating").descending()));
         model.addAttribute("reviews", reviewDao.findAll(Sort.by("publishedDate")));
         model.addAttribute("bookGenre",bookDao.findAll());
+        model.addAttribute("certainBooks", bookDao.findAllByGenre("Horror"));
         return "main/welcomePage";
     }
 
