@@ -63,38 +63,26 @@ public class BookController {
     /* public void  getGenres(List<Book> books){
         //-- Created a new list nothing in it.
         List<String> genres = new ArrayList<>();
-
+        //-- pushed books genre into a new list called genres
         for (Book b : books){ genres.add(b.getGenre());}
-
-        HashMap<String, List<Book>> map = new HashMap<>();
-
-        System.out.println(genres);
+        //-- Turned the list into a new Set List
         Set<String> genreSet = new HashSet<String>(genres);
-
-        System.out.println(genreSet);
-
+        //-- Created an empty hashmap
+        HashMap<String, List<Book>> map = new HashMap<>();
+        //-- running a new loop to run through all the Set elements
         for (String genre : genreSet){
+            //--  Put the new elements into the HashMap
             map.put(genre, new ArrayList<>());
         }
-
+        //--- Here I am lost, but it seems like it is running a loop to get the book genres
         for (Book b : books){
             map.get(b.getGenre()).add(b);
         }
-        System.out.println(map);
 
-        //return map;
+        return map;
     }
 */
-    public static Object removeDuplicates(List<Book> a ){
-        ArrayList<Book> newList = new ArrayList<>();
 
-        for (int i = 1; i < a.size(); i++){
-            if(!a.get(i-1).equals(a.get(i))){
-                newList.add(a.get(i-1));
-            }
-        }
-        return newList;
-    }
 
 
     //-- Single Book Layout
