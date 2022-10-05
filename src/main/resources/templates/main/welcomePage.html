@@ -135,6 +135,65 @@
             </div>
         </div>
     </section>
+    <!--Categories Section-->
+    <div class="py-5 text-center container-fluid" style="background-color:#eee">
+        <section>
+            <!--Title-->
+            <h2 class="pb-2 w-50 display-5 mx-auto border-bottom border-dark">Categories</h2>
+            <div class="row row-cols-1 row-cols-md-3 flex-nowrap py-5 container-fluid mx-auto" style="width: 100%;overflow-x: scroll !important;">
+                <!-- Start of the Categories -->
+                <div class="col" th:each="book: ${bookGenre}">
+                    <!-- Genre Content Container -->
+                    <div class="d-flex list-unstyled container mt-auto justify-content-evenly">
+                        <div class="d-flex align-items-center rounded-5 p-5" style="background-color:#AED666; width: 18rem; height: 10rem;">
+                            <!--/*@thymesVar id="contains" type=""*/-->
+                            <h5 th:text="${book.genre}">Genre</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- Certain Genre Section Book -->
+    <div class="py-5 text-center container-fluid bg-light" >
+        <section>
+            <!-- Title -->
+            <h2 class="pb-2 w-50 display-5 mx-auto border-bottom border-dark">Horror Books</h2>
+            <!-- Arrow Container -->
+            <div class="row mx-auto w-100">
+                <!-- Left Arrow -->
+                <i class="fa-solid fa-arrow-left-long col-3 fs-4"></i>
+                <!-- Space Between -->
+                <span class="col-md-5 col-4	"></span>
+                <!-- Right Arrow -->
+                <i class="fa-solid fa-arrow-right-long col-3 text-right fs-4"></i>
+            </div>
+            <!-- Container of Books -->
+            <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 flex-nowrap py-5 container-fluid mx-auto" style="width: 100%;overflow-x: scroll !important;">
+                <!-- Start of the Books -->
+                <div class="col" th:each="book: ${certainBooks}" th:unless="${bookStat.index > 11}">
+                    <!-- Image Background -->
+                    <div class="text-white card card-cover h-100 py-5 overflow-hidden rounded-5 shadow-lg" th:style="'background-image:url(' + ${book.bookImage}+ ');background-size: cover;'" >
+                        <div class="w-75 mb-4 mx-auto rounded-3"style="background-color:#AED666;">
+                            <!-- Title of Book -->
+                            <h5 class="pt-3" th:text="${book.title}">Fake Book Title</h5>
+                            <p class="mb-3">By <span th:text="${book.author}">Fake Author</span></p>
+                        </div>
+                        <!-- Bottom Content Container -->
+                        <ul class="d-flex list-unstyled container mt-auto">
+                            <li class="me-auto rounded-circle p-4" style="background-color:#AED666;">
+                                <h5><i class="fa-solid fa-star"></i> <span th:text="${book.rating}">rating</span></h5>
+                            </li>
+                            <li class="d-flex align-items-center rounded-circle p-3" style="background-color:#AED666;">
+                                <h5 th:text="${book.genre}">Genre</h5>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
 
 </amin>
 
