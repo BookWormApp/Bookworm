@@ -48,6 +48,18 @@ public class BookController {
         return "main/welcomePage";
     }
 
+    public static Object removeDuplicates(List<Book> a ){
+        ArrayList<Book> newList = new ArrayList<>();
+
+        for (int i = 1; i < a.size(); i++){
+            if(!a.get(i-1).equals(a.get(i))){
+                newList.add(a.get(i-1));
+            }
+        }
+        return newList;
+    }
+
+
     //-- Single Book Layout
     @GetMapping("/singleBook")
     public String singleBook(){
