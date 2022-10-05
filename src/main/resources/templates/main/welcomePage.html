@@ -220,12 +220,12 @@
             <h2 class="pb-2 w-50 display-5 mx-auto border-bottom border-dark">Categories</h2>
             <div class="row row-cols-1 row-cols-md-3 flex-nowrap py-5 container-fluid mx-auto" style="width: 100%;overflow-x: scroll !important;">
                 <!-- Start of the Categories -->
-                <div class="col" th:each="book: ${bookGenre}">
+                <div class="col" th:each="genre: ${bookGenre}">
                     <!-- Genre Content Container -->
                     <div class="d-flex list-unstyled container mt-auto justify-content-evenly">
                         <div class="d-flex align-items-center rounded-5 p-5" style="background-color:#AED666; width: 18rem; height: 10rem;">
                             <!--/*@thymesVar id="contains" type=""*/-->
-                            <h5 th:text="${book.genre}">Genre</h5>
+                            <h5 th:text="${genre}">Genre</h5>
                         </div>
                     </div>
                 </div>
