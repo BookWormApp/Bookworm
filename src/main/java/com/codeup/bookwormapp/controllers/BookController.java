@@ -43,10 +43,59 @@ public class BookController {
     public String welcomePage(Model model){
         model.addAttribute("book1", bookDao.findAll(Sort.by("rating").descending()));
         model.addAttribute("reviews", reviewDao.findAll(Sort.by("publishedDate")));
-        model.addAttribute("bookGenre",bookDao.findAll());
+        model.addAttribute("bookGenre",getGenres(bookDao.findAll()));
         model.addAttribute("certainBooks", bookDao.findAllByGenre("Horror"));
         return "main/welcomePage";
     }
+
+    public Set<String>  getGenres(List<Book> books){
+        //-- Created a new list nothing in it.
+        List<String> genres = new ArrayList<>();
+        //-- for loop that adds all books genre to a list
+        for (Book b : books){genres.add(b.getGenre());}
+        //-- Turn the list into a Set
+        Set<String> genreSet = new HashSet<String>(genres);
+        //-- return the set
+        return genreSet;
+    }
+
+
+    /* public void  getGenres(List<Book> books){
+        //-- Created a new list nothing in it.
+        List<String> genres = new ArrayList<>();
+
+        for (Book b : books){ genres.add(b.getGenre());}
+
+        HashMap<String, List<Book>> map = new HashMap<>();
+
+        System.out.println(genres);
+        Set<String> genreSet = new HashSet<String>(genres);
+
+        System.out.println(genreSet);
+
+        for (String genre : genreSet){
+            map.put(genre, new ArrayList<>());
+        }
+
+        for (Book b : books){
+            map.get(b.getGenre()).add(b);
+        }
+        System.out.println(map);
+
+        //return map;
+    }
+*/
+    public static Object removeDuplicates(List<Book> a ){
+        ArrayList<Book> newList = new ArrayList<>();
+
+        for (int i = 1; i < a.size(); i++){
+            if(!a.get(i-1).equals(a.get(i))){
+                newList.add(a.get(i-1));
+            }
+        }
+        return newList;
+    }
+
 
     //-- Single Book Layout
     @GetMapping("/singleBook")
