@@ -10,6 +10,9 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 //    Lists all books
     List<Book> findAll();
 
-//    Build out a custom function that will show a specific category once. With a for loop and if statement if genre print out the display if not genre dont print out.
+
+
+    //-- List of all the horror books
+    List<Book> findAllByGenre(String horror);
 
 }
