@@ -11,9 +11,9 @@
         <!-- Dark Background Overlay -->
         <div class="container-fluid py-5 bg-dark bg-dark vw-100 bg-opacity-75">
             <!-- Intro Container -->
-            <div class="row p-4 container align-items-center mx-auto">
+            <div class="row p-0 p-md-4 container align-items-center mx-auto">
                 <!-- columns -->
-                <div class="col-lg-7 p-3 text-danger rounded-4 p-lg-5 pt-lg-3">
+                <div class="col-lg-7 p-md-3 text-danger rounded-4 p-lg-5 pt-lg-3">
                     <!-- Image SMall View -->
                     <img class="d-block d-md-none" src="/img/it.png" alt="Spooky Season" width="auto" height="220">
                     <!-- Title -->
@@ -21,7 +21,7 @@
                     <!-- Boot Title -->
                     <h3 class="fw-bold text-white d-inline mx-2">It</h3><p class="d-inline text-white">by Stephen King</p>
                     <!-- Lead Body -->
-                    <p class="lead mt-2 lh-sm text-white px-1 px-md-3">They were seven teenagers when they first stumbled upon the horror. Now they are grown-up men and women who have gone out into the big world to gain success and happiness. But none of them can withstand the force that has drawn them back to Derry to face the nightmare without an end, and the evil without a name.</p>
+                    <p class="lead mt-2 lh-sm text-white px-0 mx-0 px-md-3">They were seven teenagers when they first stumbled upon the horror. Now they are grown-up men and women who have gone out into the big world to gain success and happiness. But none of them can withstand the force that has drawn them back to Derry to face the nightmare without an end, and the evil without a name.</p>
                     <!-- Button Container -->
                     <div class="d-grid gap-2 mt-5 d-md-flex justify-content-md-start mb-4 mb-lg-3">
                         <!-- Button -->
@@ -35,45 +35,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Best Seller Section -->
-    <div class="py-5 text-center container-fluid bg-light" >
-        <section>
-            <!-- Title -->
-            <h2 class="pb-2 w-50 display-5 mx-auto border-bottom border-dark">Best Ratings</h2>
-            <!-- Arrow Container -->
-            <div class="row mx-auto w-100">
-                <!-- Left Arrow -->
-                <i class="fa-solid fa-arrow-left-long col-3 fs-4"></i>
-                <!-- Space Between -->
-                <span class="col-md-5 col-4	"></span>
-                <!-- Right Arrow -->
-                <i class="fa-solid fa-arrow-right-long col-3 text-right fs-4"></i>
-            </div>
-            <!-- Container of Books -->
-            <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 flex-nowrap py-5 container-fluid mx-auto" style="width: 100%;overflow-x: scroll !important;">
-                <!-- Start of the Books -->
-                <div class="col" th:each="book: ${book1}" th:unless="${bookStat.index > 11}">
-                    <!-- Image Background -->
-                    <div class="text-white card card-cover h-100 py-5 overflow-hidden rounded-5 shadow-lg" th:style="'background-image:url(' + ${book.bookImage}+ ');background-size: cover;'" >
-                        <div class="w-75 mb-4 mx-auto rounded-3"style="background-color:#AED666;">
-                            <!-- Title of Book -->
-                            <h5 class="pt-3" th:text="${book.title}">Fake Book Title</h5>
-                            <p class="mb-3">By <span th:text="${book.author}">Fake Author</span></p>
-                        </div>
-                        <!-- Bottom Content Container -->
-                        <ul class="d-flex list-unstyled container mt-auto">
-                            <li class="me-auto rounded-circle p-4" style="background-color:#AED666;">
-                                <h5><i class="fa-solid fa-star"></i> <span th:text="${book.rating}">rating</span></h5>
-                            </li>
-                            <li class="d-flex align-items-center rounded-circle p-3" style="background-color:#AED666;">
-                                <h5 th:text="${book.genre}">Genre</h5>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
     </div>
     <!-- Review Section -->
     <section class="py-5" style="background-color:#F0DD9B;">
@@ -135,27 +96,8 @@
             </div>
         </div>
     </section>
-    <!--Categories Section-->
-    <div class="py-5 text-center container-fluid" style="background-color:#eee">
-        <section>
-            <!--Title-->
-            <h2 class="pb-2 w-50 display-5 mx-auto border-bottom border-dark">Categories</h2>
-            <div class="row row-cols-1 row-cols-md-3 flex-nowrap py-5 container-fluid mx-auto" style="width: 100%;overflow-x: scroll !important;">
-                <!-- Start of the Categories -->
-                <div class="col" th:each="book: ${bookGenre}">
-                    <!-- Genre Content Container -->
-                    <div class="d-flex list-unstyled container mt-auto justify-content-evenly">
-                        <div class="d-flex align-items-center rounded-5 p-5" style="background-color:#AED666; width: 18rem; height: 10rem;">
-                            <!--/*@thymesVar id="contains" type=""*/-->
-                            <h5 th:text="${book.genre}">Genre</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
     <!-- Certain Genre Section Book -->
-    <div class="py-5 text-center container-fluid bg-light" >
+    <div class="py-5 text-center container-fluid" style="background-color:#eee" >
         <section>
             <!-- Title -->
             <h2 class="pb-2 w-50 display-5 mx-auto border-bottom border-dark">Horror Books</h2>
@@ -193,9 +135,122 @@
             </div>
         </section>
     </div>
-
+    <!-- Quote Section -->
+    <section class="container-fluid py-5" style="background-color:#F0DD9B;">
+        <!-- Centers Card  -->
+        <div class="container d-flex justify-content-center align-items-center">
+            <!-- Changes the size of the Card -->
+            <div class="col col-md-9 col-lg-7">
+                <!-- Card Container -->
+                <div class="card shadow-lg rounded-5">
+                    <!-- Card Body Container -->
+                    <div class="card-body p-5">
+                        <!-- Image Container -->
+                        <div class="text-center mb-4 pb-2">
+                            <!-- Image -->
+                            <img src="/img/light.png" alt="Bulb" width="100">
+                        </div>
+                        <!-- Text Container -->
+                        <figure class="text-center mb-0 ">
+                            <!-- Quote Container -->
+                            <blockquote class="blockquote">
+                                <p class="pb-3 w-75 mx-auto">
+                                    <!-- Quotations -->
+                                    <i class="fas fa-quote-left fa-xs text-success"></i>
+                                    <!-- Quote Large Screen-->
+                                    <span id="quote" class="lead font-italic">Many of life's failures are people who did not realize how close they were to success when they gave up</span>
+                                    <!-- Quotations -->
+                                    <i class="fas fa-quote-right fa-xs text-success"></i>
+                                </p>
+                            </blockquote>
+                            <!-- Author Name - footer -->
+                            <figcaption class="blockquote-footer mb-0">
+                                <!-- Author-->
+                                <span id="author">Thomas Edison</span>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Best Seller Section -->
+    <div class="py-5 text-center container-fluid" style="background-color:#eee" >
+        <section>
+            <!-- Title -->
+            <h2 class="pb-2 w-50 display-5 mx-auto border-bottom border-dark">Best Ratings</h2>
+            <!-- Arrow Container -->
+            <div class="row mx-auto w-100">
+                <!-- Left Arrow -->
+                <i class="fa-solid fa-arrow-left-long col-3 fs-4"></i>
+                <!-- Space Between -->
+                <span class="col-md-5 col-4	"></span>
+                <!-- Right Arrow -->
+                <i class="fa-solid fa-arrow-right-long col-3 text-right fs-4"></i>
+            </div>
+            <!-- Container of Books -->
+            <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 flex-nowrap py-5 container-fluid mx-auto" style="width: 100%;overflow-x: scroll !important;">
+                <!-- Start of the Books -->
+                <div class="col" th:each="book: ${book1}" th:unless="${bookStat.index > 11}">
+                    <!-- Image Background -->
+                    <div class="text-white card card-cover h-100 py-5 overflow-hidden rounded-5 shadow-lg" th:style="'background-image:url(' + ${book.bookImage}+ ');background-size: cover;'" >
+                        <div class="w-75 mb-4 mx-auto rounded-3"style="background-color:#AED666;">
+                            <!-- Title of Book -->
+                            <h5 class="pt-3" th:text="${book.title}">Fake Book Title</h5>
+                            <p class="mb-3">By <span th:text="${book.author}">Fake Author</span></p>
+                        </div>
+                        <!-- Bottom Content Container -->
+                        <ul class="d-flex list-unstyled container mt-auto">
+                            <li class="me-auto rounded-circle p-4" style="background-color:#AED666;">
+                                <h5><i class="fa-solid fa-star"></i> <span th:text="${book.rating}">rating</span></h5>
+                            </li>
+                            <li class="d-flex align-items-center rounded-circle p-3" style="background-color:#AED666;">
+                                <h5 th:text="${book.genre}">Genre</h5>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!--Categories Section-->
+    <div class="py-5 text-center container-fluid" style="background-color:#F0DD9B;">
+        <section>
+            <!--Title-->
+            <h2 class="pb-2 w-50 display-5 mx-auto border-bottom border-dark">Categories</h2>
+            <div class="row row-cols-1 row-cols-md-3 flex-nowrap py-5 container-fluid mx-auto" style="width: 100%;overflow-x: scroll !important;">
+                <!-- Start of the Categories -->
+                <div class="col" th:each="book: ${bookGenre}">
+                    <!-- Genre Content Container -->
+                    <div class="d-flex list-unstyled container mt-auto justify-content-evenly">
+                        <div class="d-flex align-items-center rounded-5 p-5" style="background-color:#AED666; width: 18rem; height: 10rem;">
+                            <!--/*@thymesVar id="contains" type=""*/-->
+                            <h5 th:text="${book.genre}">Genre</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
 </main>
-
+<footer th:replace="partials :: footer"></footer>
 </body>
+<script>
+    let quote = document.getElementById("quote");
+    let author = document.getElementById("author");
+
+    const url = "https://api.quotable.io/random";
+
+    let getQuote = () => {
+        fetch(url)
+            .then((data) => data.json())
+            .then((item) => {
+                quote.innerText = item.content;
+                author.innerText = item.author;
+            });
+    };
+
+    window.addEventListener("load", getQuote);
+</script>
 </html>
