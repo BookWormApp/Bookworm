@@ -1,9 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head th:replace="partials.html :: head ('Single Book Page')"></head>
+<style>
+	/*Set card to 18rem so it is to the right of the screen when medium sized*/
+@media only screen and (min-width: 768px) {
+        .bookDetailsCard {
+            width: 18rem;
+        }
+    }
+
+</style>
 
 <body>
-<nav th:replace="partials :: navbar"/>
+<!--Navigation-->
+<nav th:replace="partials :: navbar-user"/>
+
+
 <main>
 <!--	set margin/padding and remove border-->
 	<div class="card mb-3 p-5 border border-0">
@@ -39,7 +51,7 @@
 <!--	Book Details Section-->
 	<section>
 <!--		------SPECIAL NOTE: NEED to set medium width at 18rem and no width for mobile view-->
-		<div class="card" style="">
+		<div class="card bookDetailsCard">
 <!--			Will change style Card Header for now-->
 			<div class="card-header">
 				Book Details
