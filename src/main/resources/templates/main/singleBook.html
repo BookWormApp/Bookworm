@@ -1,11 +1,77 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials.html :: head ('Single Book')"></head>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="partials.html :: head ('Single Book Page')"></head>
+<style>
+	/*Set card to 18rem so it is to the right of the screen when medium sized*/
+@media only screen and (min-width: 768px) {
+        .bookDetailsCard {
+            width: 18rem;
+        }
+    }
+
+</style>
+
 <body>
+<!--Navigation-->
 <nav th:replace="partials :: navbar-user"/>
 
 
-    <H1>Single Book Page</H1>
+<main>
+<!--	set margin/padding and remove border-->
+	<div class="card mb-3 p-5 border border-0">
+<!--		Sets the image to the left and the description to the right-->
+		<div class="row g-0">
+<!--			Book Image-->
+			<div class="col-md-4">
+				<img th:src="${book.bookImage}" class="img-fluid rounded-start" alt="Book Cover">
+			</div>
+			<div class="col-md-8">
+<!--				Start of Card-->
+				<div class="card-body">
+<!--					Book Title-->
+					<h5 class="card-title" th:text="${book.title}">Book title</h5>
+<!--					Book Rating-->
+					<b>
+						<p th:text="${book.rating}">rating in number need to look up star rating & avg rating</p>
+					</b>
+<!--					Book Description-->
+					<p class="card-text" th:text="${book.description}">Description</p>
+				</div>
+
+			</div>
+<!--			Card Footer-->
+			<div class="card-footer text-muted d-flex justify-content-evenly align-items-center border border-0">
+<!--				Author Name-->
+				<p th:text="${book.author}">author Name</p>
+<!--				Published Date-->
+				<p th:text="${book.publishedDate}"></p>
+			</div>
+		</div>
+	</div>
+<!--	Book Details Section-->
+	<section>
+<!--		------SPECIAL NOTE: NEED to set medium width at 18rem and no width for mobile view-->
+		<div class="card bookDetailsCard">
+<!--			Will change style Card Header for now-->
+			<div class="card-header">
+				Book Details
+			</div>
+<!--			List of Book Details-->
+			<ul class="list-group list-group-flush">
+<!--				Book Title-->
+				<li class="list-group-item d-flex justify-content-evenly">Book Title:<p th:text="${book.title}"></p></li>
+				<li class="list-group-item">A second item</li>
+				<li class="list-group-item">A third item</li>
+			</ul>
+		</div>
+
+	</section>
+
+
+</main>
+
+
+<footer th:replace="partials :: footer"></footer>
 
 </body>
 </html>
