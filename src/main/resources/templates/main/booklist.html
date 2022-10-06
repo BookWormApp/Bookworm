@@ -2,9 +2,119 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials.html :: head ('Bookworm Search')"></head>
 <body>
-<nav th:replace="partials :: navbar-user"/>
-<H1>Book list page </H1>
+    <!-- Navigation -->
+    <nav th:replace="partials :: navbar-user"/>
 
 
+<!-- Main Section -->
+<main class="container-fluid" style="background-color:#F0DD9B;">
+    <!-- Put the whole section in a container -->
+    <div class="container py-5" >
+        <!-- Book Search Section -->
+        <div class="row">
+            <!------- Start of  left SideBar ------->
+            <aside class="col-md-3 col-12">
+                <!---- Search Bar Container -->
+                <div class="py-2">
+                    <!-- Search Bar grouping -->
+                    <div class="input-group">
+                        <!-- input section -->
+                        <input type="search" class="form-control rounded-start" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                        <!-- Search Button -->
+                        <button type="button" class="btn rounded-end" style="background-color:#AED666">search</button>
+                    </div>
+                </div>
+                <!---- Search by Genre Container -->
+                <div class="border border-3 rounded-3 border-dark bg-light d-none d-md-block mt-2">
+                    <!-- Container Title -->
+                    <h5 class="text-center py-2" style="background-color:#AED666">Category</h5>
+                    <!-- Container of book genre -->
+                    <div class="" style="overflow-y:scroll;height: 8.7em">
+                        <!-- Start of the for each loop for the books -->
+                        <div th:each="genre: ${BookListSearchByGenre}">
+                            <!-- Anchor link for genre -->
+                            <a class="p-1 link-dark text-decoration-none" href="" th:text="${genre}">Item 1</a>
+                        </div>
+                    </div>
+                </div>
+                <!----- Search by Author Container -->
+                <div class="border border-3 rounded-3 border-dark bg-light d-none d-md-block mt-2">
+                    <!-- Title -->
+                    <h5 class="text-center py-2" style="background-color:#AED666">Authors</h5>
+                    <!-- Container of book Authors -->
+                    <div class="" style="overflow-y:scroll;height: 8.7em">
+                        <!-- Start of the for each loop for the books -->
+                        <div th:each="author: ${BookListSearchByAuthor}">
+                            <!-- Anchor link for authors -->
+                            <a class="p-1 link-dark text-decoration-none" href="" th:text="${author}">Item 1</a>
+                        </div>
+                    </div>
+                </div>
+
+            </aside>
+            <!------- Start of the Book List ------->
+            <div class="col-md-9 border col-12 vh-100 " >
+                <!-- Title of page -->
+                <H1 class="text-center display-4 mb-5">Book list page </H1>
+                <!------- Start of Displaying Books ------->
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 container-fluid mx-auto" style="width: 100%;">
+                    <!-- Start of the Books -->
+                    <div class="col py-2" th:each="book: ${BookListAllBooks}">
+                        <!-- Image Background -->
+                        <div class="text-white card card-cover position-relative h-100 py-5  rounded-5 shadow-lg" th:style="'background-image:url(' + ${book.bookImage}+ ');background-size: cover;'" >
+                           <!-- Container for Book Genre -->
+                            <div class="w-50 mx-auto rounded-5 mb-5" style="background-color:#AED666;margin-top:-40px">
+                                <!-- Text of Book Genre -->
+                                <h5 th:text="${book.genre}" class="text-center">Genre</h5>
+                            </div>
+                            <!-- Container for book title and book author -->
+                            <div class="w-75 mt-2 text-center mx-auto rounded-3 mb-5" style="background-color:#AED666;">
+                                <!-- Title of Book -->
+                                <h5 class="pt-3" th:text="${book.title}">Fake Book Title</h5>
+                                <!-- Book Author -->
+                                <p class="mb-3">By <span th:text="${book.author}">Fake Author</span></p>
+                            </div>
+                            <!-- Rating Container -->
+                            <div class=" px-3 py-1 rounded-4 position-absolute end-0 bottom-0 translate-middle" style="background-color:#AED666;" >
+                                <!-- Book Rating -->
+                                <h5><i class="fa-solid fa-star"></i> <span th:text="${book.rating}">rating</span></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!------- pagination ------->
+                <section aria-label="Page navigation" th:if="${BookListAllBooks.totalPages gt 0}">
+                    <!-- pagination Container -->
+                    <ul class="pagination justify-content-end font-weight-bold">
+                        <!-- Left arrow Button -->
+                        <li class="page-item p-0 m-0" th:classappend="${BookListAllBooks.number eq 0} ? 'disabled'">
+                            <!-- Anchor link-->
+                            <a class="page-link link-success" th:href="@{/booklist?page={id}(id=${BookListAllBooks.number lt 2 ? 1 : BookListAllBooks.number})}" aria-label="Previous" title="Previous Page" data-toggle="tooltip">
+                                <!-- Left arrow Icon -->
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <!-- NUMBER of Books page -->
+                        <li class="page-item" th:classappend="${i eq BookListAllBooks.number + 1} ? 'active'"  th:each="i : ${#numbers.sequence( 1, BookListAllBooks.totalPages, 1)}">
+                            <!-- Anchor link-->
+                            <a class="page-link bg-light link-success fw-3" th:href="@{/booklist?page={id}(id=${i})}" th:text="${i}" th:title="${'Page '+ i}" data-toggle="tooltip"></a>
+                        </li>
+                        <!-- Right arrow Button -->
+                        <li class="page-item" th:classappend="${BookListAllBooks.number + 1 eq BookListAllBooks.totalPages} ? 'disabled'">
+                            <!-- Anchor link-->
+                            <a class="page-link link-success" th:href="@{/booklist?page={id}(id=${BookListAllBooks.number + 2})}" aria-label="Next" title="Next Page" data-toggle="tooltip">
+                                <!-- Right arrow Icon -->
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<footer th:replace="partials :: footer"></footer>
 </body>
 </html>
