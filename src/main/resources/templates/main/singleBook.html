@@ -1,11 +1,41 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials.html :: head ('Single Book')"></head>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="partials.html :: head ('Single Book Page')"></head>
 <body>
-<nav th:replace="partials :: navbar-user"/>
+<nav th:replace="partials :: navbar"/>
+<main>
+<!--	set margin/padding and remove border-->
+	<div class="card mb-3 p-5 border border-0">
+<!--		Sets the image to the left and the description to the right-->
+		<div class="row g-0">
+<!--			Book Image-->
+			<div class="col-md-4">
+				<img th:src="${book.bookImage}" class="img-fluid rounded-start" alt="Book Cover">
+			</div>
+			<div class="col-md-8">
+<!--				Start of Card-->
+				<div class="card-body">
+<!--					Book Title-->
+					<h5 class="card-title" th:text="${book.title}">Book title</h5>
+<!--					Book Description-->
+					<p class="card-text" th:text="${book.description}">Description</p>
+				</div>
+
+			</div>
+			<!--					Footer of Card-->
+			<div class="card-footer text-muted d-flex justify-content-evenly align-items-center">
+				<!--						Book Author displayed on footer of card-->
+				<p th:text="${book.author}">author Name</p>
+				<!--						Book Published date displayed on footer of card-->
+				<p th:text="${book.publishedDate}"></p>
+			</div>
+		</div>
+	</div>
 
 
-    <H1>Single Book Page</H1>
+</main>
 
+
+<footer th:replace="partials :: footer"></footer>
 </body>
 </html>
