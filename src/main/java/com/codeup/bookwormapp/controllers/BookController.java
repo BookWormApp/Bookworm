@@ -4,15 +4,15 @@ import com.codeup.bookwormapp.models.Book;
 import com.codeup.bookwormapp.repository.BookRepository;
 import com.codeup.bookwormapp.repository.ReviewRepository;
 import com.codeup.bookwormapp.repository.UserRepository;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.thymeleaf.expression.Lists;
-import org.thymeleaf.expression.Sets;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.*;
-import java.util.stream.Collectors;
+
 
 
 @Controller
@@ -34,7 +34,26 @@ public class BookController {
 
     //-- Book list
     @GetMapping("/booklist")
-    public String showBook(){
+    public String showBook(
+            Model model,
+            HttpServletRequest request
+    ){
+
+        int page = 0; //default page number is 0 (yes it is weird)
+        int size = 5; //default page size is 10
+
+        if (request.getParameter("page") != null && !request.getParameter("page").isEmpty()) {
+            page = Integer.parseInt(request.getParameter("page")) - 1;
+        }
+
+        if (request.getParameter("size") != null && !request.getParameter("size").isEmpty()) {
+            size = Integer.parseInt(request.getParameter("size"));
+        }
+
+
+        model.addAttribute("BookListSearchByGenre",getGenres(bookDao.findAll()));
+        model.addAttribute("BookListSearchByAuthor",getAuthor(bookDao.findAll()));
+        model.addAttribute("BookListAllBooks",bookDao.findAll(PageRequest.of(page, size)));
         return "main/booklist";
     }
 
@@ -48,53 +67,53 @@ public class BookController {
         return "main/welcomePage";
     }
 
+    //-- Grabbing the Genre with no duplicates
     public Set<String>  getGenres(List<Book> books){
         //-- Created a new list nothing in it.
         List<String> genres = new ArrayList<>();
         //-- for loop that adds all books genre to a list
-        for (Book b : books){genres.add(b.getGenre());}
+        for (Book b : books){ genres.add(b.getGenre());}
         //-- Turn the list into a Set
         Set<String> genreSet = new HashSet<String>(genres);
         //-- return the set
         return genreSet;
     }
 
+    //-- Grabbing the Author with no duplicates
+    public Set<String>  getAuthor(List<Book> books){
+        //-- Created a new list nothing in it.
+        List<String> authors = new ArrayList<>();
+        //-- for loop that adds all books genre to a list
+        for (Book b : books){authors.add(b.getAuthor());}
+        //-- Turn the list into a Set
+        Set<String> authorSet = new HashSet<String>(authors);
+        //-- return the set
+        return authorSet;
+    }
 
     /* public void  getGenres(List<Book> books){
         //-- Created a new list nothing in it.
         List<String> genres = new ArrayList<>();
-
+        //-- pushed books genre into a new list called genres
         for (Book b : books){ genres.add(b.getGenre());}
-
-        HashMap<String, List<Book>> map = new HashMap<>();
-
-        System.out.println(genres);
+        //-- Turned the list into a new Set List
         Set<String> genreSet = new HashSet<String>(genres);
-
-        System.out.println(genreSet);
-
+        //-- Created an empty hashmap
+        HashMap<String, List<Book>> map = new HashMap<>();
+        //-- running a new loop to run through all the Set elements
         for (String genre : genreSet){
+            //--  Put the new elements into the HashMap
             map.put(genre, new ArrayList<>());
         }
-
+        //--- Here I am lost, but it seems like it is running a loop to get the book genres
         for (Book b : books){
             map.get(b.getGenre()).add(b);
         }
-        System.out.println(map);
 
-        //return map;
+        return map;
     }
 */
-    public static Object removeDuplicates(List<Book> a ){
-        ArrayList<Book> newList = new ArrayList<>();
 
-        for (int i = 1; i < a.size(); i++){
-            if(!a.get(i-1).equals(a.get(i))){
-                newList.add(a.get(i-1));
-            }
-        }
-        return newList;
-    }
 
 
     //-- Single Book Layout
