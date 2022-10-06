@@ -109,6 +109,7 @@ public class BookController {
         List<Review> reviewsList = reviewDao.findAllByBook(book);
         model.addAttribute("reviewsList", reviewsList);
 
+
         return "main/singleBook";
     }
 

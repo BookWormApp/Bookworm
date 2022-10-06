@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head th:replace="partials.html :: head ('Single Book Page')"></head>
+
 <body>
 <nav th:replace="partials :: navbar"/>
 <main>
@@ -17,6 +18,10 @@
 				<div class="card-body">
 <!--					Book Title-->
 					<h5 class="card-title" th:text="${book.title}">Book title</h5>
+<!--					Book Rating-->
+					<b>
+						<p th:text="${book.rating}">rating in number need to look up star rating & avg rating</p>
+					</b>
 <!--					Book Description-->
 					<p class="card-text" th:text="${book.description}">Description</p>
 				</div>
@@ -31,11 +36,26 @@
 			</div>
 		</div>
 	</div>
+<!--	Book Details Section-->
+	<section>
+		<div class="card" style="width: 22rem;">
+			<div class="card-header">
+				Book Details
+			</div>
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item d-flex justify-content-evenly">Book Title:<p th:text="${book.title}"></p></li>
+				<li class="list-group-item">A second item</li>
+				<li class="list-group-item">A third item</li>
+			</ul>
+		</div>
+
+	</section>
 
 
 </main>
 
 
 <footer th:replace="partials :: footer"></footer>
+
 </body>
 </html>
