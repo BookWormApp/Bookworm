@@ -54,6 +54,9 @@ public class BookController {
         model.addAttribute("BookListSearchByGenre",getGenres(bookDao.findAll()));
         model.addAttribute("BookListSearchByAuthor",getAuthor(bookDao.findAll()));
         model.addAttribute("BookListAllBooks",bookDao.findAll(PageRequest.of(page, size)));
+        model.addAttribute("BookSectionByGenre", bookDao.findAllByGenre("Horror"));
+        model.addAttribute("reviews", reviewDao.findAll(Sort.by("publishedDate")));
+        model.addAttribute("bookRecommondationByRating", bookDao.findAll(Sort.by("rating", "id").descending()));
         return "main/booklist";
     }
 
