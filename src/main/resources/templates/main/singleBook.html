@@ -79,49 +79,12 @@
 
 <!--	Book Recommendations based off of liked books-->
 	<section>
-		<div class="row row-cols-1 row-cols-md-2 g-4">
-			<div class="col">
-				<div class="card">
-					<img th:src="${book.bookImage}" class="card-img-top" alt="...">
-					<div class="card-body">
-						<h5 class="card-title">Card title</h5>
-						<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card">
-					<img src="..." class="card-img-top" alt="...">
-					<div class="card-body">
-						<h5 class="card-title">Card title</h5>
-						<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card">
-					<img src="..." class="card-img-top" alt="...">
-					<div class="card-body">
-						<h5 class="card-title">Card title</h5>
-						<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card">
-					<img src="..." class="card-img-top" alt="...">
-					<div class="card-body">
-						<h5 class="card-title">Card title</h5>
-						<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-					</div>
-				</div>
-			</div>
-		</div>
+
 	</section>
 
 <!--	Reviews Section-->
 	<section>
-		<h4 class="title d-flex justify-content-center mt-2">Customer Reviews</h4>
+		<h4 class="title d-flex justify-content-center mt-4">Customer Reviews</h4>
 		<div class="d-flex row justify-content-center align-items-center">
 
 
@@ -129,15 +92,12 @@
 
 	</section>
 
-	<main class="w-100">
 		<section class="text-center my-5 pb-3 container-fluid my-5">
-			<h2 class=" pt-3">Reviews from Others</h2>
-			<h6 class="pt-2">Add a Review!</h6>
 			<!--User Review Container	-->
 			<!--Main Section -->
-			<div class="px-4 mt-5 pt-5">
+			<div class="px-4 mt-2">
 				<!-- spacing around cards -->
-				<main class="row d-flex flex-wrap justify-content-around" >
+				<main class="row flex-wrap d-flex justify-content-center" >
 					<!-- *CARD STARTS -->
 					<section class="card border-0 shadow m-2" style="max-width: 483px;" th:each="review : ${reviewsList}">
 							<div class="col-md-8">
@@ -195,7 +155,7 @@
 								</div>
 							</div>
 					</section>
-				</main>
+
 			</div>
 		</section>
 
