@@ -17,6 +17,7 @@
 
 
 <main>
+	<section>
 <!--	set margin/padding and remove border-->
 	<div class="card mb-3 p-5 border border-0">
 <!--		Sets the image to the left and the description to the right-->
@@ -48,6 +49,8 @@
 			</div>
 		</div>
 	</div>
+	</section>
+
 <!--	Book Details Section-->
 	<section>
 <!--		------SPECIAL NOTE: NEED to set medium width at 18rem and no width for mobile view-->
@@ -59,15 +62,14 @@
 <!--			List of Book Details-->
 			<ul class="list-group list-group-flush">
 <!--				Book Title-->
-				<li class="list-group-item d-flex justify-content-evenly fw-bold">Book Title:<p th:text="${book.title}"></p></li>
-				<li class="list-group-item d-flex justify-content-evenly fw-bold">Author:<p th:text="${book.author}"></p></li>
-				<li class="list-group-item d-flex justify-content-evenly fw-bold">ISBN:<p th:text="${book.isbn}"></p></li>
-				<li class="list-group-item d-flex justify-content-evenly fw-bold">Page Count:<p th:text="${book.pageCount}"></p></li>
-				<li class="list-group-item d-flex justify-content-evenly fw-bold">Date Published:<p th:text="${book.publishedDate}"></p></li>
-				<li class="list-group-item d-flex justify-content-evenly fw-bold">Category:<p th:text="${book.genre}"></p></li>
+				<li class="list-group-item d-flex justify-content-evenly fw-bold">Book Title:<p class="fw-normal" th:text="${book.title}"></p></li>
+				<li class="list-group-item d-flex justify-content-evenly fw-bold">Author:<p class="fw-normal" th:text="${book.author}"></p></li>
+				<li class="list-group-item d-flex justify-content-evenly fw-bold">ISBN:<p class="fw-normal" th:text="${book.isbn}"></p></li>
+				<li class="list-group-item d-flex justify-content-evenly fw-bold">Page Count:<p class="fw-normal" th:text="${book.pageCount}"></p></li>
+				<li class="list-group-item d-flex justify-content-evenly fw-bold">Date Published:<p class="fw-normal" th:text="${book.publishedDate}"></p></li>
+				<li class="list-group-item d-flex justify-content-evenly fw-bold">Category:<p class="badge rounded-pill text-bg-success" th:text="${book.genre}"></p></li>
 			</ul>
 		</div>
-
 	</section>
 
 
