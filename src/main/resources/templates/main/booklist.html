@@ -156,44 +156,33 @@
             <i class="fa-solid fa-arrow-right-long col-3 text-right fs-4"></i>
         </div>
         <!-- Review Container to make it scrollable-->
-        <div class="container-fluid row vw-100 flex-nowrap py-5" style=";overflow-x: scroll !important;">
-            <!-- Start of Review Cards -->
-            <div class="card mb-3 p-0 m-0 mx-3" style="max-width: 540px;" th:each="review: ${reviews}" th:unless="${reviewStat.index > 8}">
-                <div class="row g-0 p-0 m-0">
-                    <div class="col-md-4">
-                        <img th:src="${review.book.bookImage}" class="img-fluid rounded-start p-0 m-0" alt="${review.book.title}" style="height:300px!important;width:100%;">
+        <div class="container-fluid row row-cols-1 row-cols-md-6 w-100 flex-nowrap py-5" style=";overflow-x: scroll !important;">
+            <div class="row" th:each="review: ${reviews}" th:unless="${reviewStat.index > 9}">
+                <div class="col position-relative">
+                    <!-- User Profile Pic -->
+                    <img  th:src="${review.user.profilePhoto}" th:if="${review.user.profilePhoto != null}" class="d-none d-md-block rounded-circle border border-3 border-success position-absolute top-50 start-0 p-0" height="70px" width="70px" style="z-index:5;margin-left:30px;margin-top: -100px"/>
+                    <img  th:src="${review.user.profilePhoto}" th:if="${review.user.profilePhoto != null}" class="d-block d-md-none rounded-circle border border-3 border-success position-absolute top-50 start-0 p-0" height="70px" width="70px" style="z-index:5;margin-left:30px;margin-top: -150px"/>
+                    <!-- Username Large -->
+                    <a href="/register" class="d-none d-md-block link-light fs-6 badge px-3 rounded-3 text-capitalize text-decoration-none position-absolute top-50 start-0" style="background-color:#AED666;z-index:5;margin-top:-30px;margin-left:20px">
+                        @<span th:text="${review.user.username}">Username</span>
+                    </a>
+                    <!-- Username Small -->
+                    <a href="/register" class="d-block d-md-none link-light fs-6 badge px-3 rounded-3 text-capitalize text-decoration-none position-absolute top-50 start-0" style="background-color:#AED666;z-index:5;margin-top:-75px;margin-left:20px">
+                        @<span th:text="${review.user.username}">Username</span>
+                    </a>
+                    <!-- Rating -->
+                    <div class="flex-nowrap position-absolute end-0   badge float-end" style="z-index:5;background-color:#AED666;margin-right:15px;margin-bottom:-80px">
+                        <h5 class="p-0 m-0"><i class="fa-solid fa-star p-0 m-0"></i> <span th:text="${review.rating}">rating</span></h5>
                     </div>
-                    <div class="col-md-8  position-relative pb-5">
-                        <div class="card-body">
-                            <!-- Review Title -->
-                            <h5 class="card-title" th:text="${review.title}">Card title</h5>
-                            <!-- Review Body Large -->
-                            <p class="card-text overflow-scroll d-none d-md-block lh-sm px-2" th:text="${review.reviewBody}" style="height:9em;">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <!-- Review Body Small -->
-                            <p class="card-text overflow-scroll d-block d-md-none mb-5 lh-sm px-2" th:text="${review.reviewBody}" style="height:7em;">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <!-- Username and Image Container -->
-                            <div class="text-nowrap position-absolute bottom-0 start-0 fw-bold row mb-5 mx-2">
-                                <!-- User Image -->
-                                <img  th:src="${review.user.profilePhoto}" th:if="${review.user.profilePhoto != null}" class="col-4 rounded-circle border border-3 border-success p-0" height="50px" width="50px"/>
-                                <!-- Username -->
-                                <a href="/register" class="link-dark p-0 m-0 text-decoration-none col-8 d-flex align-items-center">
-                                    <p class="px-2 mt-2 fw-bold text-nowrap">@<span th:text="${review.user.username}">Username</span></p>
-                                </a>
-                            </div>
-                            <!-- Badge Rating -->
-                            <div class="badge text-wrap position-absolute bottom-0 end-0 fw-bold mb-md-5 mb-2 mt-2 mx-2" style="width: 6rem;font-size:14px;background-color:#AED666;">
-                                <i class="fa-solid fa-star "></i> <span th:text="${review.rating}">4</span>
-                            </div>
-                            <!-- Card Footer -->
-                            <div class="card-footer position-absolute bottom-0 w-100 end-0 m-0 row">
-                                <!-- Footer Text -->
-                                <small class="text-muted col-8 text-right p-0 m-0" th:text="${review.publishedDate}">2009-06-24 12:40:00 AM</small>
-                                <!-- Footer Genre -->
-                                <span class="d-flex align-items-center d-none d-md-block col-4 text-muted">
-                                            <!--Genre Text -->
-                                            <small th:text="${review.book.genre}">Genre</small>
-                                        </span>
-                            </div>
+                    <div class="card h-100">
+                        <img th:src="${review.book.bookImage}" class="card-img-top d-none d-md-block" th:alt="${review.title}" th:height="240" width="180">
+                        <img th:src="${review.book.bookImage}" class="card-img-top d-block d-md-none" th:alt="${review.title}" th:height="180" width="120">
+                        <div class="card-body mt-2">
+                            <h5 class="card-title text-decoration-underline" th:text="${review.title}">Card title</h5>
+                            <p class="card-text" th:text="${review.reviewBody}">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted" th:text="${review.publishedDate}">Last updated 3 mins ago</small>
                         </div>
                     </div>
                 </div>
