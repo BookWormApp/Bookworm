@@ -87,58 +87,60 @@
 		<h4 class="title d-flex justify-content-center mt-4">Customer Reviews</h4>
 					<!-- *CARD STARTS -->
 					<div class="card border-0 shadow" th:each="review : ${reviewsList}">
-							<div class="col-md-8">
+							<div >
 								<div class="card-body">
-									<!-- Title -->
-									<h5 class="card-title text-mute" th:text="${review.title}"></h5>
 									<!-- Username -->
-									<a th:href="|/profile/${review.getUser().getUsername()}|"> <p class="p-0 m-0" th:text="${review.user.username}"></p></a>
-									<p class="fs-6 fw-lighter" th:text="${review.publishedDate}"></p>
-									<!-- Stars -->
-									<div th:switch="${review.rating}">
-										<p th:case="'1'">
-											<i class="fa-solid star fa-star" value="1"></i>
-											<i class="fa-regular star fa-star" value="2"></i>
-											<i class="fa-regular star fa-star" value="3"></i>
-											<i class="fa-regular star fa-star" value="4"></i>
-											<i class="fa-regular star fa-star" value="5"></i>
-											<span> 1</span>
-										</p>
-										<p th:case="'2'">
-											<i class="fa-solid star fa-star" value="1"></i>
-											<i class="fa-solid star fa-star" value="2"></i>
-											<i class="fa-regular star fa-star" value="3"></i>
-											<i class="fa-regular star fa-star" value="4"></i>
-											<i class="fa-regular star fa-star" value="5"></i>
-											<span> 2</span>
-										</p>
-										<p th:case="'3'">
-											<i class="fa-solid star fa-star" value="1"></i>
-											<i class="fa-solid star fa-star" value="2"></i>
-											<i class="fa-solid star fa-star" value="3"></i>
-											<i class="fa-regular star fa-star" value="4"></i>
-											<i class="fa-regular star fa-star" value="5"></i>
-											<span> 3</span>
-										</p>
-										<p th:case="'4'">
-											<i class="fa-solid star fa-star" value="1"></i>
-											<i class="fa-solid star fa-star" value="2"></i>
-											<i class="fa-solid star fa-star" value="3"></i>
-											<i class="fa-solid star fa-star" value="4"></i>
-											<i class="fa-regular star fa-star" value="5"></i>
-											<span> 4</span>
-										</p>
-										<p th:case="'5'">
-											<i class="fa-solid star fa-star" value="1"></i>
-											<i class="fa-solid star fa-star" value="2"></i>
-											<i class="fa-solid star fa-star" value="3"></i>
-											<i class="fa-solid star fa-star" value="4"></i>
-											<i class="fa-solid star fa-star" value="5"></i>
-											<span> 5</span>
-										</p>
-									</div>
+									<a th:href="|/profile/${review.getUser().getUsername()}|"> <p th:text="${review.user.username}"></p></a>
+									<!-- Title -->
+									<h5 class="card-title" th:text="${review.title}"></h5>
 									<!-- Body -->
+									<div class="d-flex align-items-center">
 									<p class="card-body" th:text="${review.reviewBody}"></p>
+										<!-- Stars -->
+										<div class="no-wrap" th:switch="${review.rating}">
+											<p th:case="'1'">
+												<i class="fa-solid star fa-star" value="1"></i>
+												<i class="fa-regular star fa-star" value="2"></i>
+												<i class="fa-regular star fa-star" value="3"></i>
+												<i class="fa-regular star fa-star" value="4"></i>
+												<i class="fa-regular star fa-star" value="5"></i>
+												<span> 1</span>
+											</p>
+											<p th:case="'2'">
+												<i class="fa-solid star fa-star" value="1"></i>
+												<i class="fa-solid star fa-star" value="2"></i>
+												<i class="fa-regular star fa-star" value="3"></i>
+												<i class="fa-regular star fa-star" value="4"></i>
+												<i class="fa-regular star fa-star" value="5"></i>
+												<span> 2</span>
+											</p>
+											<p th:case="'3'">
+												<i class="fa-solid star fa-star" value="1"></i>
+												<i class="fa-solid star fa-star" value="2"></i>
+												<i class="fa-solid star fa-star" value="3"></i>
+												<i class="fa-regular star fa-star" value="4"></i>
+												<i class="fa-regular star fa-star" value="5"></i>
+												<span> 3</span>
+											</p>
+											<p th:case="'4'">
+												<i class="fa-solid star fa-star" value="1"></i>
+												<i class="fa-solid star fa-star" value="2"></i>
+												<i class="fa-solid star fa-star" value="3"></i>
+												<i class="fa-solid star fa-star" value="4"></i>
+												<i class="fa-regular star fa-star" value="5"></i>
+												<span> 4</span>
+											</p>
+											<p th:case="'5'">
+												<i class="fa-solid star fa-star" value="1"></i>
+												<i class="fa-solid star fa-star" value="2"></i>
+												<i class="fa-solid star fa-star" value="3"></i>
+												<i class="fa-solid star fa-star" value="4"></i>
+												<i class="fa-solid star fa-star" value="5"></i>
+												<span> 5</span>
+											</p>
+										</div>
+									</div>
+									<p class="fs-6 fw-lighter" th:text="${review.publishedDate}"></p>
 								</div>
 							</div>
 					</div>
