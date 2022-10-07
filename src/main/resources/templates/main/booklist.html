@@ -1,117 +1,151 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials.html :: head ('Bookworm Search')"></head>
 <body>
-<!-- Navigation -->
-<nav th:replace="partials :: navbar-user"/>
-<!----- Tittle of Whole Page ------>
-<div class="py-5 text-center" style="background-color:#F0DD9B;">
-    <!-- Title -->
-    <h2 class="pb-2 w-50 d-none d-md-block display-5 mx-auto border-bottom border-dark">Search for any book</h2>
-    <h2 class="pb-2 w-75 d-block d-md-none display-5 mx-auto border-bottom border-dark">Search for any book</h2>
-</div>
-<!----- Main Section ------>
-<main class="container-fluid pb-md-5 " style="background-color:#F0DD9B;">
-    <!-- Main Container -->
-    <div class="container">
-        <!-- Start a Row -->
-        <div class="row pb-3 pb-md-0">
-            <!----- Left Aside Section Category, Author, Search Bar---->
-            <aside class="col-md-3 col-12">
-                <!-- Search Bar Container -->
-                <div class="input-group">
-                    <!-- input section -->
-                    <input type="search" class="form-control p-0 m-0 rounded-start" placeholder="Title, Author, Category" aria-label="Search" aria-describedby="search-addon" />
-                    <!-- Search Button -->
-                    <button type="button" class="btn rounded-end" style="background-color:#AED666">search</button>
-                </div>
-                <!---- Search by Genre Container -->
-                <div class="border border-3 rounded-3 border-dark d-none d-md-block mt-2">
-                    <!-- Container Title -->
-                    <h5 class="text-center rounded-top py-2 m-0" style="background-color:#AED666">Category</h5>
-                    <!-- Container of book genre -->
-                    <div class="bg-light rounded-bottom p-0 py-1 pt-1" style="overflow-y:scroll;height: 8.7em">
-                        <!-- Start of the for each loop for the books -->
-                        <div th:each="genre: ${BookListSearchByGenre}">
-                            <!-- Anchor link for genre -->
-                            <a class="p-1 pl-5 link-dark text-decoration-none" href="" th:text="${genre}">Item 1</a>
+    <!-- Navigation -->
+    <nav th:replace="partials :: navbar-user"/>
+    <!----- Tittle of Whole Page ------>
+    <div class="py-5 text-center" style="background-color:#F0DD9B;">
+        <!-- Title -->
+        <h2 class="pb-2 w-50 d-none d-md-block display-5 mx-auto border-bottom border-dark">Search for any book</h2>
+        <h2 class="pb-2 w-75 d-block d-md-none display-5 mx-auto border-bottom border-dark">Search for any book</h2>
+    </div>
+    <!----- Main Section ------>
+    <main class="container-fluid pb-md-5 " style="background-color:#F0DD9B;">
+        <!-- Main Container -->
+        <div class="container">
+            <!-- Start a Row -->
+            <div class="row pb-3 pb-md-0">
+                <!----- Left Aside Section Category, Author, Search Bar---->
+                <aside class="col-md-3 col-12">
+                    <!-- Search Bar Container -->
+                    <div class="input-group">
+                        <!-- input section -->
+                        <input type="search" class="form-control p-0 m-0 rounded-start" placeholder="Title, Author, Category" aria-label="Search" aria-describedby="search-addon" />
+                        <!-- Search Button -->
+                        <button type="button" class="btn rounded-end" style="background-color:#AED666">search</button>
+                    </div>
+                    <!---- Search by Genre Container -->
+                    <div class="border border-3 rounded-3 border-dark d-none d-md-block mt-2">
+                        <!-- Container Title -->
+                        <h5 class="text-center rounded-top py-2 m-0" style="background-color:#AED666">Category</h5>
+                        <!-- Container of book genre -->
+                        <div class="bg-light rounded-bottom p-0 py-1 pt-1" style="overflow-y:scroll;height: 8.7em">
+                            <!-- Start of the for each loop for the books -->
+                            <div th:each="genre: ${BookListSearchByGenre}">
+                                <!-- Anchor link for genre -->
+                                <a class="p-1 pl-5 link-dark text-decoration-none" href="" th:text="${genre}">Item 1</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!----- Search by Author Container -->
-                <div class="border border-3 rounded-3 border-dark d-none d-md-block mt-2">
-                    <!-- Title -->
-                    <h5 class="text-center rounded-top py-2 m-0" style="background-color:#AED666">Authors</h5>
-                    <!-- Container of book Authors -->
-                    <div class="bg-light rounded-bottom p-0 py-1 pt-1" style="overflow-y:scroll;height: 8.7em">
-                        <!-- Start of the for each loop for the books -->
-                        <div th:each="author: ${BookListSearchByAuthor}">
-                            <!-- Anchor link for authors -->
-                            <a class="p-1 pl-5 link-dark text-decoration-none" href="" th:text="${author}">Item 1</a>
+                    <!----- Search by Author Container -->
+                    <div class="border border-3 rounded-3 border-dark d-none d-md-block mt-2">
+                        <!-- Title -->
+                        <h5 class="text-center rounded-top py-2 m-0" style="background-color:#AED666">Authors</h5>
+                        <!-- Container of book Authors -->
+                        <div class="bg-light rounded-bottom p-0 py-1 pt-1" style="overflow-y:scroll;height: 8.7em">
+                            <!-- Start of the for each loop for the books -->
+                            <div th:each="author: ${BookListSearchByAuthor}">
+                                <!-- Anchor link for authors -->
+                                <a class="p-1 pl-5 link-dark text-decoration-none" href="" th:text="${author}">Item 1</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </aside>
-            <!----- Right side Section - Book list---->
-            <div class="col-md-9 col-12 v-100" >
-                <!-- Start of Display Book List -->
-                <div class="row row-cols-2 row-cols-md-3 text-center container-fluid pt-3 w-100 m-0 ">
-                    <!-- Whole Book Container, Rating IMG, Genre -->
-                    <!-- Book Display -->
-                    <div class="col py-3 px-0 m-0 px-1" th:each="book: ${BookListAllBooks}" style="z-index:0;">
-                        <!-- Rating -->
-                        <div class="flex-nowrap badge float-end" style="z-index:5;background-color:#AED666;margin-right:50px;margin-bottom:-20px">
-                            <h5 class="p-0 m-0"><i class="fa-solid fa-star p-0 m-0"></i> <span th:text="${book.rating}">rating</span></h5>
-                        </div>
-                        <!-- Book Image -->
-                        <div class="d-flex justify-content-center w-100 p-0 m-0">
-                            <img th:src="${book.bookImage}" style="z-index:-1;!important;margin-bottom: -20px" alt="${book.title}" class="d-none d-md-block shadow-lg rounded-3" th:height="280" width="220"/>
-                            <img th:src="${book.bookImage}" style="z-index:-1;!important;margin-bottom: -20px" alt="${book.title}" class="d-block d-md-none  shadow-lg rounded-3" th:height="180" width="120"/>
-                        </div>
-                        <!-- Book Genre -->
-                        <div class="flex-nowrap badge" style="background-color:#AED666;z-index:100;!important;">
-                            <h5 class="p-0 m-0" th:text="${book.genre}">Genre</h5>
+                </aside>
+                <!----- Right side Section - Book list---->
+                <div class="col-md-9 col-12 v-100" >
+                    <!-- Start of Display Book List -->
+                    <div class="row row-cols-2 row-cols-md-3 text-center container-fluid pt-3 w-100 m-0 ">
+                        <!-- Whole Book Container, Rating IMG, Genre -->
+                        <!-- Book Display -->
+                        <div class="col py-3 px-0 m-0 px-1" th:each="book: ${BookListAllBooks}" style="z-index:0;">
+                            <!-- Rating -->
+                            <div class="flex-nowrap badge float-end" style="z-index:5;background-color:#AED666;margin-right:50px;margin-bottom:-20px">
+                                <h5 class="p-0 m-0"><i class="fa-solid fa-star p-0 m-0"></i> <span th:text="${book.rating}">rating</span></h5>
+                            </div>
+                            <!-- Book Image -->
+                            <div class="d-flex justify-content-center w-100 p-0 m-0">
+                                <img th:src="${book.bookImage}" style="z-index:-1;!important;margin-bottom: -20px" alt="${book.title}" class="d-none d-md-block shadow-lg rounded-3" th:height="280" width="220"/>
+                                <img th:src="${book.bookImage}" style="z-index:-1;!important;margin-bottom: -20px" alt="${book.title}" class="d-block d-md-none  shadow-lg rounded-3" th:height="180" width="120"/>
+                            </div>
+                            <!-- Book Genre -->
+                            <div class="flex-nowrap badge" style="background-color:#AED666;z-index:100;!important;">
+                                <h5 class="p-0 m-0" th:text="${book.genre}">Genre</h5>
+                            </div>
                         </div>
                     </div>
+                    <!------- pagination ------->
+                    <section aria-label="Page navigation" th:if="${BookListAllBooks.totalPages gt 0}">
+                        <!-- pagination Container -->
+                        <ul class="pagination justify-content-end font-weight-bold py-5">
+                            <!-- Left arrow Button -->
+                            <li class="page-item p-0 m-0" th:classappend="${BookListAllBooks.number eq 0} ? 'disabled'">
+                                <!-- Anchor link-->
+                                <a class="page-link link-success" th:href="@{/booklist?page={id}(id=${BookListAllBooks.number lt 2 ? 1 : BookListAllBooks.number})}" aria-label="Previous" title="Previous Page" data-toggle="tooltip">
+                                    <!-- Left arrow Icon -->
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <!-- NUMBER of Books page -->
+                            <li class="page-item" th:classappend="${i eq BookListAllBooks.number + 1} ? 'active'"  th:each="i : ${#numbers.sequence( 1, BookListAllBooks.totalPages, 1)}">
+                                <!-- Anchor link-->
+                                <a class="page-link bg-light link-success fw-3" th:href="@{/booklist?page={id}(id=${i})}" th:text="${i}" th:title="${'Page '+ i}" data-toggle="tooltip"></a>
+                            </li>
+                            <!-- Right arrow Button -->
+                            <li class="page-item" th:classappend="${BookListAllBooks.number + 1 eq BookListAllBooks.totalPages} ? 'disabled'">
+                                <!-- Anchor link-->
+                                <a class="page-link link-success" th:href="@{/booklist?page={id}(id=${BookListAllBooks.number + 2})}" aria-label="Next" title="Next Page" data-toggle="tooltip">
+                                    <!-- Right arrow Icon -->
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </section>
                 </div>
-                <!------- pagination ------->
-                <section aria-label="Page navigation" th:if="${BookListAllBooks.totalPages gt 0}">
-                    <!-- pagination Container -->
-                    <ul class="pagination justify-content-end font-weight-bold py-5">
-                        <!-- Left arrow Button -->
-                        <li class="page-item p-0 m-0" th:classappend="${BookListAllBooks.number eq 0} ? 'disabled'">
-                            <!-- Anchor link-->
-                            <a class="page-link link-success" th:href="@{/booklist?page={id}(id=${BookListAllBooks.number lt 2 ? 1 : BookListAllBooks.number})}" aria-label="Previous" title="Previous Page" data-toggle="tooltip">
-                                <!-- Left arrow Icon -->
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <!-- NUMBER of Books page -->
-                        <li class="page-item" th:classappend="${i eq BookListAllBooks.number + 1} ? 'active'"  th:each="i : ${#numbers.sequence( 1, BookListAllBooks.totalPages, 1)}">
-                            <!-- Anchor link-->
-                            <a class="page-link bg-light link-success fw-3" th:href="@{/booklist?page={id}(id=${i})}" th:text="${i}" th:title="${'Page '+ i}" data-toggle="tooltip"></a>
-                        </li>
-                        <!-- Right arrow Button -->
-                        <li class="page-item" th:classappend="${BookListAllBooks.number + 1 eq BookListAllBooks.totalPages} ? 'disabled'">
-                            <!-- Anchor link-->
-                            <a class="page-link link-success" th:href="@{/booklist?page={id}(id=${BookListAllBooks.number + 2})}" aria-label="Next" title="Next Page" data-toggle="tooltip">
-                                <!-- Right arrow Icon -->
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </section>
             </div>
         </div>
+    </main>
+    <!-- Certain Genre Section Book -->
+    <div class="py-5 text-center container-fluid " style="background-color:#eee;z-index:-1;" >
+        <section>
+            <!-- Title -->
+            <h2 class="pb-2 w-75 d-block d-md-none display-5 mx-auto border-bottom border-dark">Horror Books</h2>
+            <h2 class="pb-2 w-50 d-none d-md-block display-5 mx-auto border-bottom border-dark">Horror Books</h2>
+            <!-- Arrow Container -->
+            <div class="row mx-auto w-100">
+                <!-- Left Arrow -->
+                <i class="fa-solid fa-arrow-left-long col-3 fs-4"></i>
+                <!-- Space Between -->
+                <span class="col-md-5 col-4	"></span>
+                <!-- Right Arrow -->
+                <i class="fa-solid fa-arrow-right-long col-3 text-right fs-4"></i>
+            </div>
+            <!-- Container of Books -->
+            <div class="row row-cols-1 text-center row-cols-md-3 row-cols-lg-4 row-cols-xl-6 flex-nowrap container-fluid pt-3" style="width: 100%;overflow-x: scroll !important;">
+                <!-- Book Display -->
+                <div class="col py-3" th:each="book: ${BookSectionByGenre}" th:unless="${bookStat.index >2}" style="z-index:0;">
+                    <!-- Rating -->
+                    <div class="flex-nowrap badge float-end" style="z-index:5;background-color:#AED666;margin-right:50px;margin-bottom:-80px">
+                        <h5 class="p-0 m-0"><i class="fa-solid fa-star p-0 m-0"></i> <span th:text="${book.rating}">rating</span></h5>
+                    </div>
+                    <!-- Book Image -->
+                    <div class="d-flex justify-content-center w-100">
+                        <img th:src="${book.bookImage}" style="z-index:-1;!important;margin-bottom: -20px" alt="${book.title}" class="d-none d-md-block shadow-lg rounded-3" th:height="280" width="220"/>
+                        <img th:src="${book.bookImage}" style="z-index:-1;!important;margin-bottom: -20px" alt="${book.title}" class="d-block d-md-none  shadow-lg rounded-3" th:height="180" width="120"/>
+                    </div>
+                    <!-- Book Genre -->
+                    <div class="flex-nowrap badge" style="background-color:#AED666;z-index:100;!important;">
+                        <h5 class="p-0 m-0" th:text="${book.genre}">Genre</h5>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-</main>
-<!-- Certain Genre Section Book -->
-<div class="py-5 text-center container-fluid " style="background-color:#eee;z-index:-1;" >
-    <section>
-        <!-- Title -->
-        <h2 class="pb-2 w-75 d-block d-md-none display-5 mx-auto border-bottom border-dark">Horror Books</h2>
-        <h2 class="pb-2 w-50 d-none d-md-block display-5 mx-auto border-bottom border-dark">Horror Books</h2>
+    <!-- Review Section -->
+    <div class="container-fluid pb-md-5 py-5" style="background-color:#F0DD9B;">
+        <!-- Section Title (small) -->
+        <h2 class="pb-2 w-75 d-block d-md-none  display-5 mx-auto text-center border-bottom border-dark">Recent Reviews</h2>
+        <h2 class="pb-2 w-50 d-none d-md-block  display-5 mx-auto text-center border-bottom border-dark">Recent Reviews</h2>
         <!-- Arrow Container -->
         <div class="row mx-auto w-100">
             <!-- Left Arrow -->
@@ -121,111 +155,44 @@
             <!-- Right Arrow -->
             <i class="fa-solid fa-arrow-right-long col-3 text-right fs-4"></i>
         </div>
-        <!-- Container of Books -->
-        <div class="row row-cols-1 text-center row-cols-md-3 row-cols-lg-4 row-cols-xl-6 flex-nowrap container-fluid pt-3" style="width: 100%;overflow-x: scroll !important;">
-            <!-- Book Display -->
-            <div class="col py-3" th:each="book: ${BookSectionByGenre}" th:unless="${bookStat.index >2}" style="z-index:0;">
-                <!-- Rating -->
-                <div class="flex-nowrap badge float-end" style="z-index:5;background-color:#AED666;margin-right:50px;margin-bottom:-80px">
-                    <h5 class="p-0 m-0"><i class="fa-solid fa-star p-0 m-0"></i> <span th:text="${book.rating}">rating</span></h5>
-                </div>
-                <!-- Book Image -->
-                <div class="d-flex justify-content-center w-100">
-                    <img th:src="${book.bookImage}" class="shadow-lg rounded-3" style="z-index:-1;!important;margin-bottom: -20px" alt="${book.title}" th:height="280"/>
-                </div>
-                <!-- Book Genre -->
-                <div class="flex-nowrap badge" style="background-color:#AED666;z-index:100;!important;">
-                    <h5 class="p-0 m-0" th:text="${book.genre}">Genre</h5>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
-<!-- Review Section -->
-<div class="container-fluid pb-md-5 py-5" style="background-color:#F0DD9B;">
-    <!-- Section Title (small) -->
-    <h2 class="pb-2 w-75 d-block d-md-none  display-5 mx-auto text-center border-bottom border-dark">Recent Reviews</h2>
-    <h2 class="pb-2 w-50 d-none d-md-block  display-5 mx-auto text-center border-bottom border-dark">Recent Reviews</h2>
-    <!-- Arrow Container -->
-    <div class="row mx-auto w-100">
-        <!-- Left Arrow -->
-        <i class="fa-solid fa-arrow-left-long col-3 fs-4"></i>
-        <!-- Space Between -->
-        <span class="col-md-5 col-4	"></span>
-        <!-- Right Arrow -->
-        <i class="fa-solid fa-arrow-right-long col-3 text-right fs-4"></i>
-    </div>
-    <!-- Review Container to make it scrollable-->
-    <div class="container-fluid row vw-100 flex-nowrap py-5" style=";overflow-x: scroll !important;">
-        <!-- Start of Review Cards -->
-        <div class="card mb-3 p-0 m-0 mx-3" style="max-width: 540px;" th:each="review: ${reviews}" th:unless="${reviewStat.index > 8}">
-            <div class="row g-0 p-0 m-0">
-                <div class="col-md-4">
-                    <img th:src="${review.book.bookImage}" class="img-fluid rounded-start p-0 m-0" alt="${review.book.title}" style="height:300px!important;width:100%;">
-                </div>
-                <div class="col-md-8  position-relative pb-5">
-                    <div class="card-body">
-                        <!-- Review Title -->
-                        <h5 class="card-title" th:text="${review.title}">Card title</h5>
-                        <!-- Review Body Large -->
-                        <p class="card-text overflow-scroll d-none d-md-block lh-sm px-2" th:text="${review.reviewBody}" style="height:9em;">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <!-- Review Body Small -->
-                        <p class="card-text overflow-scroll d-block d-md-none mb-5 lh-sm px-2" th:text="${review.reviewBody}" style="height:7em;">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <!-- Username and Image Container -->
-                        <div class="text-nowrap position-absolute bottom-0 start-0 fw-bold row mb-5 mx-2">
-                            <!-- User Image -->
-                            <img  th:src="${review.user.profilePhoto}" th:if="${review.user.profilePhoto != null}" class="col-4 rounded-circle border border-3 border-success p-0" height="50px" width="50px"/>
-                            <!-- Username -->
-                            <a href="/register" class="link-dark p-0 m-0 text-decoration-none col-8 d-flex align-items-center">
-                                <p class="px-2 mt-2 fw-bold text-nowrap">@<span th:text="${review.user.username}">Username</span></p>
-                            </a>
-                        </div>
-                        <!-- Badge Rating -->
-                        <div class="badge text-wrap position-absolute bottom-0 end-0 fw-bold mb-md-5 mb-2 mt-2 mx-2" style="width: 6rem;font-size:14px;background-color:#AED666;">
-                            <i class="fa-solid fa-star "></i> <span th:text="${review.rating}">4</span>
-                        </div>
-                        <!-- Card Footer -->
-                        <div class="card-footer position-absolute bottom-0 w-100 end-0 m-0 row">
-                            <!-- Footer Text -->
-                            <small class="text-muted col-8 text-right p-0 m-0" th:text="${review.publishedDate}">2009-06-24 12:40:00 AM</small>
-                            <!-- Footer Genre -->
-                            <span class="d-flex align-items-center d-none d-md-block col-4 text-muted">
-										<!--Genre Text -->
-										<small th:text="${review.book.genre}">Genre</small>
-									</span>
-                        </div>
+        <!-- Review Container to make it scrollable-->
+        <div class="container-fluid row vw-100 flex-nowrap py-5" style=";overflow-x: scroll !important;">
+            <!-- Start of Review Cards -->
+            <div class="card mb-3 p-0 m-0 mx-3" style="max-width: 540px;" th:each="review: ${reviews}" th:unless="${reviewStat.index > 8}">
+                <div class="row g-0 p-0 m-0">
+                    <div class="col-md-4">
+                        <img th:src="${review.book.bookImage}" class="img-fluid rounded-start p-0 m-0" alt="${review.book.title}" style="height:300px!important;width:100%;">
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- two-Page Section for Best Sellers and Quote  -->
-<div class="row justify-content-center m-0 px-0 py-5" style="background-color:#eee">
-    <!----- Left Side - Best Seller Section ----->
-    <div class="col col-md-6 rounded-5 py-3 py-md-0">
-        <div class="container h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="card shadow-lg" style="border-radius: 15px;background-color:#F0DD9B;z-index:0;">
-                    <div class="card-body p-md-5">
-                        <!-- Title -->
-                        <h2 class="p-2 w-50 mx-auto d-none text-center d-md-block display-5 border-bottom border-dark">Best Rating</h2>
-                        <h2 class="p-2 w-75 text-center mx-auto d-block d-md-none display-5 border-bottom border-dark">Best Rating</h2>
-                        <!-- Book Display -->
-                        <div class="row flex-nowrap text-center container-fluid" style="width: 100%;overflow-x: scroll !important;">
-                            <div class="col py-3" th:each="book: ${bookRecommondationByRating}" th:unless="${bookStat.index >2}">
-                                <!-- Rating -->
-                                <div class="flex-nowrap badge float-end" style="z-index:5;background-color:#AED666;margin-right:40px;margin-bottom:-80px">
-                                    <h5 class="p-0 m-0"><i class="fa-solid fa-star p-0 m-0"></i> <span th:text="${book.rating}">rating</span></h5>
-                                </div>
-                                <!-- Book Image -->
-                                <div class="d-flex justify-content-center w-100">
-                                    <img th:src="${book.bookImage}" style="z-index:-1;!important;margin-bottom: -20px" alt="${book.title}" th:height="280" />
-                                </div>
-                                <!-- Book Genre -->
-                                <div class="flex-nowrap badge" style="background-color:#AED666;z-index:100;!important;">
-                                    <h5 class="p-0 m-0" th:text="${book.genre}">Genre</h5>
-                                </div>
+                    <div class="col-md-8  position-relative pb-5">
+                        <div class="card-body">
+                            <!-- Review Title -->
+                            <h5 class="card-title" th:text="${review.title}">Card title</h5>
+                            <!-- Review Body Large -->
+                            <p class="card-text overflow-scroll d-none d-md-block lh-sm px-2" th:text="${review.reviewBody}" style="height:9em;">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <!-- Review Body Small -->
+                            <p class="card-text overflow-scroll d-block d-md-none mb-5 lh-sm px-2" th:text="${review.reviewBody}" style="height:7em;">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <!-- Username and Image Container -->
+                            <div class="text-nowrap position-absolute bottom-0 start-0 fw-bold row mb-5 mx-2">
+                                <!-- User Image -->
+                                <img  th:src="${review.user.profilePhoto}" th:if="${review.user.profilePhoto != null}" class="col-4 rounded-circle border border-3 border-success p-0" height="50px" width="50px"/>
+                                <!-- Username -->
+                                <a href="/register" class="link-dark p-0 m-0 text-decoration-none col-8 d-flex align-items-center">
+                                    <p class="px-2 mt-2 fw-bold text-nowrap">@<span th:text="${review.user.username}">Username</span></p>
+                                </a>
+                            </div>
+                            <!-- Badge Rating -->
+                            <div class="badge text-wrap position-absolute bottom-0 end-0 fw-bold mb-md-5 mb-2 mt-2 mx-2" style="width: 6rem;font-size:14px;background-color:#AED666;">
+                                <i class="fa-solid fa-star "></i> <span th:text="${review.rating}">4</span>
+                            </div>
+                            <!-- Card Footer -->
+                            <div class="card-footer position-absolute bottom-0 w-100 end-0 m-0 row">
+                                <!-- Footer Text -->
+                                <small class="text-muted col-8 text-right p-0 m-0" th:text="${review.publishedDate}">2009-06-24 12:40:00 AM</small>
+                                <!-- Footer Genre -->
+                                <span class="d-flex align-items-center d-none d-md-block col-4 text-muted">
+                                            <!--Genre Text -->
+                                            <small th:text="${review.book.genre}">Genre</small>
+                                        </span>
                             </div>
                         </div>
                     </div>
@@ -233,42 +200,76 @@
             </div>
         </div>
     </div>
-    <!----- Right Side - Quote Section ----->
-    <div class="col col-md-5">
-        <div class="container h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col col-lg-9 col-xl-7">
-                    <!-- Whole Card Container -->
-                    <div class="card shadow-lg" style="border-radius: 15px;">
-                        <!-- Card Body -->
-                        <div class="card-body p-5">
-                            <!-- IMAGE section -->
-                            <div class="text-center mb-4 pb-2">
-                                <img src="/img/lightBulb.png" alt="Bulb" width="100">
+    <!-- two-Page Section for Best Sellers and Quote  -->
+    <div class="row justify-content-center m-0 px-0 py-5" style="background-color:#eee">
+        <!----- Left Side - Best Seller Section ----->
+        <div class="col col-md-6 rounded-5 py-3 py-md-0">
+            <div class="container h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="card shadow-lg" style="border-radius: 15px;background-color:#F0DD9B;z-index:0;">
+                        <div class="card-body p-md-5 row row-cols-2 row-cols-md-3">
+                            <!-- Title -->
+                            <h2 class="p-2 w-50 mx-auto d-none text-center d-md-block display-5 border-bottom border-dark">Best Rating</h2>
+                            <h2 class="p-2 w-75 text-center mx-auto d-block d-md-none display-5 border-bottom border-dark">Best Rating</h2>
+                            <!-- Book Display -- Large  -->
+                            <div class="row m-0 p-0 row-cols-2 row-cols-md-3 text-center container-fluid" style="width: 100%;">
+                                <div class="col py-3 mx-0 px-0" th:each="book: ${bookRecommondationByRating}" th:unless="${bookStat.index >2}">
+                                    <!-- Rating -->
+                                    <div class="flex-nowrap badge float-end" style="z-index:5;background-color:#AED666;margin-right:40px;margin-bottom:-80px">
+                                        <h5 class="p-0 m-0"><i class="fa-solid fa-star p-0 m-0"></i> <span th:text="${book.rating}">rating</span></h5>
+                                    </div>
+                                    <!-- Book Image -->
+                                    <div class="d-flex justify-content-center w-100">
+                                        <img th:src="${book.bookImage}" style="z-index:-1;!important;margin-bottom: -20px" alt="${book.title}" class="d-none d-md-block shadow-lg rounded-3" th:height="280" width="220"/>
+                                        <img th:src="${book.bookImage}" style="z-index:-1;!important;margin-bottom: -20px" alt="${book.title}" class="d-block d-md-none  shadow-lg rounded-3" th:height="180" width="120"/>
+                                    </div>
+                                    <!-- Book Genre -->
+                                    <div class="flex-nowrap badge" style="background-color:#AED666;z-index:100;!important;">
+                                        <h5 class="p-0 m-0" th:text="${book.genre}">Genre</h5>
+                                    </div>
+                                </div>
                             </div>
-                            <!-- Quote & Author body -->
-                            <figure class="text-center mb-0">
-                                <!-- Quote -->
-                                <blockquote class="blockquote">
-                                    <p class="pb-3">
-                                        <i class="fas fa-quote-left fa-xs text-primary"></i>
-                                        <span id="quote" class="lead font-italic">Many of life's failures are people who did not realize how close they were to success when they gave up</span>
-                                        <i class="fas fa-quote-right fa-xs text-primary"></i>
-                                    </p>
-                                </blockquote>
-                                <!-- Author -->
-                                <figcaption id="author" class="blockquote-footer mb-0">Thomas Edison</figcaption>
-                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!----- Right Side - Quote Section ----->
+        <div class="col col-md-5">
+            <div class="container h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col col-lg-9 col-xl-7">
+                        <!-- Whole Card Container -->
+                        <div class="card shadow-lg" style="border-radius: 15px;">
+                            <!-- Card Body -->
+                            <div class="card-body p-5">
+                                <!-- IMAGE section -->
+                                <div class="text-center mb-4 pb-2">
+                                    <img src="/img/lightBulb.png" alt="Bulb" width="100">
+                                </div>
+                                <!-- Quote & Author body -->
+                                <figure class="text-center mb-0">
+                                    <!-- Quote -->
+                                    <blockquote class="blockquote">
+                                        <p class="pb-3">
+                                            <i class="fas fa-quote-left fa-xs text-primary"></i>
+                                            <span id="quote" class="lead font-italic">Many of life's failures are people who did not realize how close they were to success when they gave up</span>
+                                            <i class="fas fa-quote-right fa-xs text-primary"></i>
+                                        </p>
+                                    </blockquote>
+                                    <!-- Author -->
+                                    <figcaption id="author" class="blockquote-footer mb-0">Thomas Edison</figcaption>
+                                </figure>
 
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Footer -->
-<footer th:replace="partials :: footer"></footer>
+    <!-- Footer -->
+    <footer th:replace="partials :: footer"></footer>
 </body>
 <!-- Javascript Call to API Random Quote -->
 <script th:replace="partials :: JavascriptAPIRandomQuote"></script>
