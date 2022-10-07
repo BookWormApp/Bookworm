@@ -59,9 +59,12 @@
 <!--			List of Book Details-->
 			<ul class="list-group list-group-flush">
 <!--				Book Title-->
-				<li class="list-group-item d-flex justify-content-evenly">Book Title:<p th:text="${book.title}"></p></li>
-				<li class="list-group-item">A second item</li>
-				<li class="list-group-item">A third item</li>
+				<li class="list-group-item d-flex justify-content-evenly fw-bold">Book Title:<p th:text="${book.title}"></p></li>
+				<li class="list-group-item d-flex justify-content-evenly fw-bold">Author:<p th:text="${book.author}"></p></li>
+				<li class="list-group-item d-flex justify-content-evenly fw-bold">ISBN:<p th:text="${book.isbn}"></p></li>
+				<li class="list-group-item d-flex justify-content-evenly fw-bold">Page Count:<p th:text="${book.pageCount}"></p></li>
+				<li class="list-group-item d-flex justify-content-evenly fw-bold">Date Published:<p th:text="${book.publishedDate}"></p></li>
+				<li class="list-group-item d-flex justify-content-evenly fw-bold">Category:<p th:text="${book.genre}"></p></li>
 			</ul>
 		</div>
 
