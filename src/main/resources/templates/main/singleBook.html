@@ -16,9 +16,10 @@
 <nav th:replace="partials :: navbar-user"/>
 
 
-<main>
-<!--	set margin/padding and remove border-->
-	<div class="card mb-3 p-5 border border-0">
+<main class="p-5">
+	<section>
+<!--	set margin and remove border-->
+	<div class="card mb-3 border border-0">
 <!--		Sets the image to the left and the description to the right-->
 		<div class="row g-0">
 <!--			Book Image-->
@@ -48,9 +49,11 @@
 			</div>
 		</div>
 	</div>
+	</section>
+
+
 <!--	Book Details Section-->
 	<section>
-<!--		------SPECIAL NOTE: NEED to set medium width at 18rem and no width for mobile view-->
 		<div class="card bookDetailsCard">
 <!--			Will change style Card Header for now-->
 			<div class="card-header">
@@ -59,15 +62,88 @@
 <!--			List of Book Details-->
 			<ul class="list-group list-group-flush">
 <!--				Book Title-->
-				<li class="list-group-item d-flex justify-content-evenly">Book Title:<p th:text="${book.title}"></p></li>
-				<li class="list-group-item">A second item</li>
-				<li class="list-group-item">A third item</li>
+				<li class="list-group-item d-flex justify-content-evenly fw-bold">Book Title:<p class="fw-normal" th:text="${book.title}"></p></li>
+<!--				Book Author-->
+				<li class="list-group-item d-flex justify-content-evenly fw-bold">Author:<p class="fw-normal" th:text="${book.author}"></p></li>
+<!--				Book ISBN-->
+				<li class="list-group-item d-flex justify-content-evenly fw-bold">ISBN:<p class="fw-normal" th:text="${book.isbn}"></p></li>
+<!--				Book Page Count-->
+				<li class="list-group-item d-flex justify-content-evenly fw-bold">Page Count:<p class="fw-normal" th:text="${book.pageCount}"></p></li>
+<!--				Book Published Date-->
+				<li class="list-group-item d-flex justify-content-evenly fw-bold">Date Published:<p class="fw-normal" th:text="${book.publishedDate}"></p></li>
+<!--				Book Genre-->
+				<li class="list-group-item d-flex justify-content-evenly fw-bold">Category:<p class="badge rounded-pill text-bg-success" th:text="${book.genre}"></p></li>
 			</ul>
 		</div>
+	</section>
+
+<!--	Book Recommendations based off of liked books-->
+	<section>
 
 	</section>
 
-
+<!--	Reviews Section-->
+	<section>
+		<h4 class="title d-flex justify-content-center mt-4">Customer Reviews</h4>
+					<!-- *CARD STARTS -->
+					<div class="card border-0 shadow" th:each="review : ${reviewsList}">
+							<div class="col-md-8">
+								<div class="card-body">
+									<!-- Title -->
+									<h5 class="card-title text-mute" th:text="${review.title}"></h5>
+									<!-- Username -->
+									<a th:href="|/profile/${review.getUser().getUsername()}|"> <p class="p-0 m-0" th:text="${review.user.username}"></p></a>
+									<p class="fs-6 fw-lighter" th:text="${review.publishedDate}"></p>
+									<!-- Stars -->
+									<div th:switch="${review.rating}">
+										<p th:case="'1'">
+											<i class="fa-solid star fa-star" value="1"></i>
+											<i class="fa-regular star fa-star" value="2"></i>
+											<i class="fa-regular star fa-star" value="3"></i>
+											<i class="fa-regular star fa-star" value="4"></i>
+											<i class="fa-regular star fa-star" value="5"></i>
+											<span> 1</span>
+										</p>
+										<p th:case="'2'">
+											<i class="fa-solid star fa-star" value="1"></i>
+											<i class="fa-solid star fa-star" value="2"></i>
+											<i class="fa-regular star fa-star" value="3"></i>
+											<i class="fa-regular star fa-star" value="4"></i>
+											<i class="fa-regular star fa-star" value="5"></i>
+											<span> 2</span>
+										</p>
+										<p th:case="'3'">
+											<i class="fa-solid star fa-star" value="1"></i>
+											<i class="fa-solid star fa-star" value="2"></i>
+											<i class="fa-solid star fa-star" value="3"></i>
+											<i class="fa-regular star fa-star" value="4"></i>
+											<i class="fa-regular star fa-star" value="5"></i>
+											<span> 3</span>
+										</p>
+										<p th:case="'4'">
+											<i class="fa-solid star fa-star" value="1"></i>
+											<i class="fa-solid star fa-star" value="2"></i>
+											<i class="fa-solid star fa-star" value="3"></i>
+											<i class="fa-solid star fa-star" value="4"></i>
+											<i class="fa-regular star fa-star" value="5"></i>
+											<span> 4</span>
+										</p>
+										<p th:case="'5'">
+											<i class="fa-solid star fa-star" value="1"></i>
+											<i class="fa-solid star fa-star" value="2"></i>
+											<i class="fa-solid star fa-star" value="3"></i>
+											<i class="fa-solid star fa-star" value="4"></i>
+											<i class="fa-solid star fa-star" value="5"></i>
+											<span> 5</span>
+										</p>
+									</div>
+									<!-- Body -->
+									<p class="card-body" th:text="${review.reviewBody}"></p>
+								</div>
+							</div>
+					</div>
+			</div>
+		</section>
 </main>
 
 
