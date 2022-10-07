@@ -48,7 +48,7 @@ public class BookController {
     ){
 
         int page = 0; //default page number is 0 (yes it is weird)
-        int size = 5; //default page size is 10
+        int size = 9; //default page size is 10
 
         if (request.getParameter("page") != null && !request.getParameter("page").isEmpty()) {
             page = Integer.parseInt(request.getParameter("page")) - 1;
@@ -62,6 +62,9 @@ public class BookController {
         model.addAttribute("BookListSearchByGenre",getGenres(bookDao.findAll()));
         model.addAttribute("BookListSearchByAuthor",getAuthor(bookDao.findAll()));
         model.addAttribute("BookListAllBooks",bookDao.findAll(PageRequest.of(page, size)));
+        model.addAttribute("BookSectionByGenre", bookDao.findAllByGenre("Horror"));
+        model.addAttribute("reviews", reviewDao.findAll(Sort.by("publishedDate")));
+        model.addAttribute("bookRecommondationByRating", bookDao.findAll(Sort.by("rating", "id").descending()));
         return "main/booklist";
     }
 
