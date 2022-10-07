@@ -40,7 +40,7 @@ public class Book {
     @Column(name = "RATING", nullable = true)
     private Integer rating;
 
-    @Column(name = "BUY_LINK", nullable = false)
+    @Column(name = "BUY_LINK", nullable = false,length = 1800)
     private String buyLink;
 
     @Column(name = "PURCHASE_PRICE", nullable = false)

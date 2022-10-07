@@ -123,7 +123,7 @@
             <!-- Container of Books -->
             <div class="row row-cols-1 text-center row-cols-md-3 row-cols-lg-4 row-cols-xl-6 flex-nowrap container-fluid pt-3" style="width: 100%;overflow-x: scroll !important;">
                 <!-- Book Display -->
-                <div class="col py-3" th:each="book: ${BookSectionByGenre}" th:unless="${bookStat.index >2}" style="z-index:0;">
+                <div class="col py-3" th:each="book: ${BookSectionByGenre}" th:unless="${bookStat.index >8}" style="z-index:0;">
                     <!-- Rating -->
                     <div class="flex-nowrap badge float-end" style="z-index:5;background-color:#AED666;margin-right:50px;margin-bottom:-80px">
                         <h5 class="p-0 m-0"><i class="fa-solid fa-star p-0 m-0"></i> <span th:text="${book.rating}">rating</span></h5>
