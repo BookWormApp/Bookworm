@@ -44,7 +44,7 @@
 		<!-- Container of the all Books -->
 		<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 p-0 m-0 w-100 flex-nowrap containerOfAllBooksBackground text-center">
 			<!-- Book Display -->
-			<div class="col container-fluid py-5 bookImageContainer-Index"  th:each="book: ${books}" th:unless="${bookStat.index >8}" style="z-index:0;">
+			<div class="col container-fluid py-5 bookImageContainer-Index"  th:each="book: ${books}" th:unless="${bookStat.index >8}">
 				<!-- Rating -->
 				<div class="flex-nowrap badge float-end ratingBadge-Index">
 					<h5><i class="fa-solid fa-star"></i> <span th:text="${book.rating}">rating</span></h5>
@@ -82,7 +82,7 @@
 			<div class="col" th:each="genre: ${bookGenre}">
 				<!-- Genre Content Container -->
 				<div class="d-flex list-unstyled container mt-auto justify-content-evenly">
-					<div class="d-flex align-items-center rounded-5 p-4 p-md-5 categoriesGenreBoxBackground-index" style="">
+					<div class="d-flex align-items-center rounded-5 p-4 p-md-5 categoriesGenreBoxBackground-index">
 						<!--/*@thymesVar id="contains" type=""*/-->
 						<h5 th:text="${genre}">Genre</h5>
 					</div>
