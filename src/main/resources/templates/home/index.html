@@ -2,135 +2,156 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head th:replace="partials.html :: head ('Welcome to BookWorm')"></head>
 <body>
+	<!-- Navigation -->
 	<nav th:replace="partials :: navbar"/>
-
-	<main class="p-0 m-0">
-		<!--Introduction-->
-		<div class="py-5 my-0 text-center" style="background-color: #F0DD9B;">
-			<!--Small Logo-->
-			<img class="d-block d-md-none mx-auto p-0 my-0" src="/img/logo.png" th:width="140" alt="BookWorm Logo">
-			<!--Med & up Logo-->
-			<img class="d-none d-md-block mx-auto p-0 my-0" src="/img/logo_Large.png" th:width="280" alt="BookWorm Logo">
-			<!--Title of Application (XS & SMALL)-->
-			<h1 class="display-3 fw-bold d-block d-md-none p-1">Bookworm</h1>
-			<!--Title of Application (MED & UP)-->
-			<h1 class="display-3 mx-auto px-5 d-none d-md-block">Find over 20 million books in <br><span class="fw-bold"> Book Worm</span></h1>
-			<!--Hr Line-->
-			<hr class="w-50 mx-auto mb-2" style="border: black solid 3px;background-color: black;">
-			<!-- Description & Button Section -->
-			<div class="col-lg-6 mx-auto">
-				<!--Description (XS & SM)-->
-				<p class="lead mb-4 d-block d-md-none">a bookworm will always rule the world... right after this chapter</p>
-				<!--Description (MD & UP)-->
-				<p class="lead mb-4 d-none d-md-block">BookWorm was created to give users an option to not only search and view books they would like to read but to also inspire other avid readers. This is possible by allowing registered users to leave reviews, retrieve recommendations based on liked books and follow other users profiles.</p>
-				<!--Button for creating an account-->
-				<button type="button" class="btn btn-lg px-4 gap-3" style="background-color:#AED666;">Primary button</button>
+	<!----- Introduction Section ----->
+	<div class="py-5" id="introduction-index">
+		<!--Small Logo-->
+		<img class="d-block d-md-none mx-auto" src="/img/logo.png" th:width="140" alt="BookWorm Logo">
+		<!--Med & up Logo-->
+		<img class="d-none d-md-block mx-auto" src="/img/logo_Large.png" th:width="280" alt="BookWorm Logo">
+		<!--Title of Application (XS & SMALL)-->
+		<h1 class="display-3 fw-bold d-block d-md-none text-center p-1">Bookworm</h1>
+		<!--Title of Application (MED & UP)-->
+		<h1 class="display-3 px-5 d-none d-md-block text-center">Find over 20 million books in <br><span class="fw-bold"> Book Worm</span></h1>
+		<!--Hr Line-->
+		<hr class="w-50 mx-auto bg-dark mb-2" size="5">
+		<!-- Description & Button Section -->
+		<div class="col-lg-6 text-center mx-auto">
+			<!--Description (XS & SM)-->
+			<p class="lead mb-4 d-block d-md-none">a bookworm will always rule the world... right after this chapter</p>
+			<!--Description (MD & UP)-->
+			<p class="lead mb-4 d-none d-md-block">BookWorm was created to give users an option to not only search and view books they would like to read but to also inspire other avid readers. This is possible by allowing registered users to leave reviews, retrieve recommendations based on liked books and follow other users profiles.</p>
+			<!--Button for creating an account-->
+			<button type="button" class="btn btn-lg px-4 gap-3" id="btn-index-intro" style="background-color:#AED666;">Create account</button>
+		</div>
+	</div>
+	<!----- Best Seller Books Section ----->
+	<div class="py-5" id="BestSeller-index">
+		<!-- Title  Small-->
+		<h2 class="pb-2 w-75 d-block d-md-none display-5 mx-auto border-bottom border-dark fw-bold text-center">Best Sellers</h2>
+		<!-- Title  large-->
+		<h2 class="pb-2 w-50 d-none d-md-block display-5 mx-auto border-bottom border-dark fw-bold text-center">Best Sellers</h2>
+		<!-- Arrow Container -->
+		<div class="row w-100 d-flex justify-content-center">
+			<!-- Left Arrow -->
+			<i class="fa-solid fw-bolder fa-arrow-left-long col-2 fs-4"></i>
+			<!-- Space Between -->
+			<span class="col-6"></span>
+			<!-- Right Arrow -->
+			<i class="fa-solid fw-bolder fa-arrow-right-long col-2 fs-4"></i>
+		</div>
+		<!-- Container of the all Books -->
+		<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 p-0 m-0 w-100 flex-nowrap containerOfAllBooksBackground text-center">
+			<!-- Book Display -->
+			<div class="col container-fluid py-5 bookImageContainer-Index"  th:each="book: ${books}" th:unless="${bookStat.index >8}" style="z-index:0;">
+				<!-- Rating -->
+				<div class="flex-nowrap badge float-end ratingBadge-Index">
+					<h5><i class="fa-solid fa-star"></i> <span th:text="${book.rating}">rating</span></h5>
+				</div>
+				<!-- Book Image -->
+				<div class="d-flex justify-content-center w-100">
+					<!-- Large Screen -->
+					<img th:src="${book.bookImage}" th:alt="${book.title}" class="d-none d-md-block shadow rounded-3 bookImage-Index" th:height="280" width="220"/>
+					<!-- Small Screen -->
+					<img th:src="${book.bookImage}" th:alt="${book.title}" class="d-block d-md-none  shadow rounded-3 bookImage-Index" th:height="180" width="120"/>
+				</div>
+				<!-- Book Genre -->
+				<div class="flex-nowrap badge badge-Index">
+					<!-- Text -->
+					<h5 class="p-0 m-0" th:text="${book.genre}">Genre</h5>
+				</div>
 			</div>
 		</div>
-		<!-- All book in order of ratings -->
-		<div class="py-5 text-center container-fluid " style="background-color:#eee;z-index:-1;" >
-			<section>
-				<!-- Title -->
-				<h2 class="pb-2 w-75 d-block d-md-none display-5 mx-auto border-bottom border-dark">Best Rating</h2>
-				<h2 class="pb-2 w-50 d-none d-md-block display-5 mx-auto border-bottom border-dark">Best Rating</h2>
-				<!-- Arrow Container -->
-				<div class="row mx-auto w-100">
-					<!-- Left Arrow -->
-					<i class="fa-solid fa-arrow-left-long col-3 fs-4"></i>
-					<!-- Space Between -->
-					<span class="col-md-5 col-4	"></span>
-					<!-- Right Arrow -->
-					<i class="fa-solid fa-arrow-right-long col-3 text-right fs-4"></i>
-				</div>
-				<!-- Container of Books -->
-				<div class="row row-cols-2 text-center row-cols-md-3 row-cols-lg-4 row-cols-xl-6 flex-nowrap container-fluid pt-3" style="width: 100%;overflow-x: scroll !important;">
-					<!-- Book Display -->
-					<div class="col py-3 mb-5" th:each="book: ${books}" th:unless="${bookStat.index >8}" style="z-index:0;">
-						<!-- Rating -->
-						<div class="flex-nowrap badge float-end" style="z-index:5;background-color:#AED666;margin-right:50px;margin-bottom:-80px">
-							<h5 class="p-0 m-0"><i class="fa-solid fa-star p-0 m-0"></i> <span th:text="${book.rating}">rating</span></h5>
-						</div>
-						<!-- Book Image -->
-						<div class="d-flex justify-content-center w-100">
-							<img th:src="${book.bookImage}" style="z-index:-1;!important;margin-bottom: -20px" alt="${book.title}" class="d-none d-md-block shadow-lg rounded-3" th:height="280" width="220"/>
-							<img th:src="${book.bookImage}" style="z-index:-1;!important;margin-bottom: -20px" alt="${book.title}" class="d-block d-md-none  shadow-lg rounded-3" th:height="180" width="120"/>
-						</div>
-						<!-- Book Genre -->
-						<div class="flex-nowrap badge" style="background-color:#AED666;z-index:100;!important;">
-							<h5 class="p-0 m-0" th:text="${book.genre}">Genre</h5>
-						</div>
-					</div>
-				</div>
-			</section>
+	</div>
+	<!----- Categories Section ----->
+	<div class="py-5 text-center container-fluid categories-index">
+		<!--Title-->
+		<h2 class="pb-2 w-50 display-5 mx-auto border-bottom border-dark">Categories</h2>
+		<!-- Arrow Container -->
+		<div class="row w-100 d-flex justify-content-center">
+			<!-- Left Arrow -->
+			<i class="fa-solid fw-bolder fa-arrow-left-long col-2 fs-4"></i>
+			<!-- Space Between -->
+			<span class="col-6"></span>
+			<!-- Right Arrow -->
+			<i class="fa-solid fw-bolder fa-arrow-right-long col-2 fs-4"></i>
 		</div>
-		<!--Categories Section-->
-		<div class="py-5 text-center container-fluid" style="background-color:#F0DD9B;">
-			<section>
-				<!--Title-->
-				<h2 class="pb-2 w-50 display-5 mx-auto border-bottom border-dark">Categories</h2>
-				<div class="row row-cols-1 row-cols-md-3 flex-nowrap py-5 container-fluid mx-auto" style="width: 100%;overflow-x: scroll !important;">
-					<!-- Start of the Categories -->
-					<div class="col" th:each="genre: ${bookGenre}">
-						<!-- Genre Content Container -->
-						<div class="d-flex list-unstyled container mt-auto justify-content-evenly">
-							<div class="d-flex align-items-center rounded-5 p-5" style="background-color:#AED666; width: 18rem; height: 10rem;">
-								<!--/*@thymesVar id="contains" type=""*/-->
-								<h5 th:text="${genre}">Genre</h5>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-		</div>
-		<!-- Review Section -->
-		<div class="container-fluid pb-md-5 py-5" style="background-color:#F0DD9B;">
-			<!-- Section Title (small) -->
-			<h2 class="pb-2 w-75 d-block d-md-none  display-5 mx-auto text-center border-bottom border-dark">Recent Reviews</h2>
-			<h2 class="pb-2 w-50 d-none d-md-block  display-5 mx-auto text-center border-bottom border-dark">Recent Reviews</h2>
-			<!-- Arrow Container -->
-			<div class="row mx-auto w-100">
-				<!-- Left Arrow -->
-				<i class="fa-solid fa-arrow-left-long col-3 fs-4"></i>
-				<!-- Space Between -->
-				<span class="col-md-5 col-4	"></span>
-				<!-- Right Arrow -->
-				<i class="fa-solid fa-arrow-right-long col-3 text-right fs-4"></i>
-			</div>
-			<!-- Review Container to make it scrollable-->
-			<div class="container-fluid row row-cols-1 row-cols-md-6 vw-100 flex-nowrap " style=";overflow-x: scroll !important;">
-				<div class="row"  th:each="review: ${reviews}" th:unless="${reviewStat.index > 9}">
-					<div class="col position-relative py-2 py-md-5 mb-5">
-						<!-- User Profile Pic -->
-						<img  th:src="${review.user.profilePhoto}" th:if="${review.user.profilePhoto != null}" class="d-none d-md-block rounded-circle border border-3 border-success position-absolute top-50 start-0 p-0" height="70px" width="70px" style="z-index:5;margin-left:30px;margin-top: -100px"/>
-						<img  th:src="${review.user.profilePhoto}" th:if="${review.user.profilePhoto != null}" class="d-block d-md-none rounded-circle border border-3 border-success position-absolute top-50 start-0 p-0" height="70px" width="70px" style="z-index:5;margin-left:30px;margin-top: -150px"/>
-						<!-- Username Large -->
-						<a href="/register" class="d-none d-md-block link-light fs-6 badge px-3 rounded-3 text-capitalize text-decoration-none position-absolute top-50 start-0" style="background-color:#AED666;z-index:5;margin-top:-25px;margin-left:20px">
-							@<span th:text="${review.user.username}">Username</span>
-						</a>
-						<!-- Username Small -->
-						<a href="/register" class="d-block d-md-none link-light fs-6 badge px-3 rounded-3 text-capitalize text-decoration-none position-absolute top-50 start-0" style="background-color:#AED666;z-index:5;margin-top:-75px;margin-left:20px">
-							@<span th:text="${review.user.username}">Username</span>
-						</a>
-						<!-- Rating -->
-						<div class="flex-nowrap position-absolute end-0   badge float-end" style="z-index:5;background-color:#AED666;margin-right:15px;margin-bottom:-80px">
-							<h5 class="p-0 m-0"><i class="fa-solid fa-star p-0 m-0"></i> <span th:text="${review.rating}">rating</span></h5>
-						</div>
-						<div class="card h-100 shadow-lg">
-							<img th:src="${review.book.bookImage}" class="card-img-top d-none d-md-block" th:alt="${review.title}" th:height="240" width="180">
-							<img th:src="${review.book.bookImage}" class="card-img-top d-block d-md-none" th:alt="${review.title}" th:height="180" width="120">
-							<div class="card-body mt-2">
-								<h5 class="card-title text-decoration-underline" th:text="${review.title}">Card title</h5>
-								<p class="card-text" th:text="${review.reviewBody}">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-							</div>
-							<div class="card-footer">
-								<small class="text-muted" th:text="${review.publishedDate}">Last updated 3 mins ago</small>
-							</div>
-						</div>
+		<div class="row row-cols-2 row-cols-md-4 flex-nowrap py-5 container-fluid mx-auto categoriesGenre-index">
+			<!-- Start of the Categories -->
+			<div class="col" th:each="genre: ${bookGenre}">
+				<!-- Genre Content Container -->
+				<div class="d-flex list-unstyled container mt-auto justify-content-evenly">
+					<div class="d-flex align-items-center rounded-5 p-4 p-md-5 categoriesGenreBoxBackground-index" style="">
+						<!--/*@thymesVar id="contains" type=""*/-->
+						<h5 th:text="${genre}">Genre</h5>
 					</div>
 				</div>
 			</div>
 		</div>
-	</main>
+	</div>
+	<!----- Reviews Section ----->
+	<div class="container-fluid pb-md-5 py-5 " id="reviewsSection-Index">
+		<!-- Section Title (small) -->
+		<h2 class="pb-2 w-75 d-block d-md-none  display-5 mx-auto text-center border-bottom border-dark">Recent Reviews</h2>
+		<!-- Section Title (med) -->
+		<h2 class="pb-2 w-50 d-none d-md-block  display-5 mx-auto text-center border-bottom border-dark">Recent Reviews</h2>
+		<!-- Arrow Container -->
+		<div class="row w-100 d-flex justify-content-center">
+			<!-- Left Arrow -->
+			<i class="fa-solid fw-bolder fa-arrow-left-long col-2 fs-4"></i>
+			<!-- Space Between -->
+			<span class="col-6"></span>
+			<!-- Right Arrow -->
+			<i class="fa-solid fw-bolder fa-arrow-right-long col-2 fs-4"></i>
+		</div>
+		<!-- Review Container to make it scrollable-->
+		<div class="container-fluid row row-cols-1 row-cols-md-6 w-100 flex-nowrap py-5 reviewscontainer-Index">
+			<!-- Start of Review -->
+			<div class="row" th:each="review: ${reviews}" th:unless="${reviewStat.index > 9}">
+				<!-- Review Card -->
+				<div class="col position-relative">
+					<!-- User Profile Pic (small)-->
+					<img  th:src="${review.user.profilePhoto}" th:if="${review.user.profilePhoto != null}" class="d-block d-md-none rounded-circle border border-3 border-success position-absolute top-50 start-0 p-0 profilePicSM" height="70px" width="70px"/>
+					<!-- User Profile Pic (med)-->
+					<img  th:src="${review.user.profilePhoto}" th:if="${review.user.profilePhoto != null}" class="d-none d-md-block rounded-circle border border-3 border-success position-absolute top-50 start-0 p-0 profilePicLG" height="70px" width="70px"/>
+					<!-- Username (small) -->
+					<a href="/register" class="d-block d-md-none link-light fs-6 badge px-3 rounded-3 text-capitalize text-decoration-none position-absolute top-50 start-0 usernameSM-index">
+						@<span th:text="${review.user.username}">Username</span>
+					</a>
+					<!-- Username (med)) -->
+					<a href="/register" class="d-none d-md-block link-light fs-6 badge px-3 rounded-3 text-capitalize text-decoration-none position-absolute top-50 start-0 usernameLG-index">
+						@<span th:text="${review.user.username}">Username</span>
+					</a>
+					<!-- Rating -->
+					<div class="flex-nowrap position-absolute end-0 badge float-end ratingReviewBadge-index">
+						<!-- Rating Text -->
+						<h5 class="p-0 m-0"><i class="fa-solid fa-star p-0 m-0"></i> <span th:text="${review.rating}">rating</span></h5>
+					</div>
+					<!-- Image Book -->
+					<div class="card h-100">
+						<!-- Book Image (large) -->
+						<img th:src="${review.book.bookImage}" class="card-img-top d-none d-md-block" th:alt="${review.title}" th:height="240" width="180">
+						<!-- Book Image (small) -->
+						<img th:src="${review.book.bookImage}" class="card-img-top d-block d-md-none" th:alt="${review.title}" th:height="180" width="120">
+						<!-- Card Body -->
+						<div class="card-body mt-2">
+							<!-- Review Title -->
+							<h5 class="card-title text-decoration-underline" th:text="${review.title}">Card title</h5>
+							<!-- Review Body -->
+							<p class="card-text" th:text="${review.reviewBody}">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+						</div>
+						<!-- Footer -->
+						<div class="card-footer">
+							<!-- Footer Text -->
+							<small class="text-muted" th:text="${review.publishedDate}">Last updated 3 mins ago</small>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Footer -->
 	<footer th:replace="partials :: footer"></footer>
 </body>
 </html>
