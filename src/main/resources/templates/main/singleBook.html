@@ -1,11 +1,155 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials.html :: head ('Single Book')"></head>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="partials.html :: head ('Single Book Page')"></head>
+<style>
+	/*Set card to 18rem so it is to the right of the screen when medium sized*/
+@media only screen and (min-width: 768px) {
+        .bookDetailsCard {
+            width: 18rem;
+        }
+    }
+
+</style>
+
 <body>
+<!--Navigation-->
 <nav th:replace="partials :: navbar-user"/>
 
 
-    <H1>Single Book Page</H1>
+<main class="p-5">
+	<section>
+<!--	set margin and remove border-->
+	<div class="card mb-3 border border-0">
+<!--		Sets the image to the left and the description to the right-->
+		<div class="row g-0">
+<!--			Book Image-->
+			<div class="col-md-4">
+				<img th:src="${book.bookImage}" class="img-fluid rounded-start" alt="Book Cover">
+			</div>
+			<div class="col-md-8">
+<!--				Start of Card-->
+				<div class="card-body">
+<!--					Book Title-->
+					<h5 class="card-title" th:text="${book.title}">Book title</h5>
+<!--					Book Rating-->
+					<b>
+						<p th:text="${book.rating}">rating in number need to look up star rating & avg rating</p>
+					</b>
+<!--					Book Description-->
+					<p class="card-text" th:text="${book.description}">Description</p>
+				</div>
+
+			</div>
+<!--			Card Footer-->
+			<div class="card-footer text-muted d-flex justify-content-evenly align-items-center border border-0">
+<!--				Author Name-->
+				<p th:text="${book.author}">author Name</p>
+<!--				Published Date-->
+				<p th:text="${book.publishedDate}"></p>
+			</div>
+		</div>
+	</div>
+	</section>
+
+
+<!--	Book Details Section-->
+	<section>
+		<div class="card bookDetailsCard">
+<!--			Will change style Card Header for now-->
+			<div class="card-header">
+				Book Details
+			</div>
+<!--			List of Book Details-->
+			<ul class="list-group list-group-flush">
+<!--				Book Title-->
+				<li class="list-group-item d-flex justify-content-evenly fw-bold">Book Title:<p class="fw-normal" th:text="${book.title}"></p></li>
+<!--				Book Author-->
+				<li class="list-group-item d-flex justify-content-evenly fw-bold">Author:<p class="fw-normal" th:text="${book.author}"></p></li>
+<!--				Book ISBN-->
+				<li class="list-group-item d-flex justify-content-evenly fw-bold">ISBN:<p class="fw-normal" th:text="${book.isbn}"></p></li>
+<!--				Book Page Count-->
+				<li class="list-group-item d-flex justify-content-evenly fw-bold">Page Count:<p class="fw-normal" th:text="${book.pageCount}"></p></li>
+<!--				Book Published Date-->
+				<li class="list-group-item d-flex justify-content-evenly fw-bold">Date Published:<p class="fw-normal" th:text="${book.publishedDate}"></p></li>
+<!--				Book Genre-->
+				<li class="list-group-item d-flex justify-content-evenly fw-bold">Category:<p class="badge rounded-pill text-bg-success" th:text="${book.genre}"></p></li>
+			</ul>
+		</div>
+	</section>
+
+<!--	Book Recommendations based off of liked books-->
+	<section>
+
+	</section>
+
+<!--	Reviews Section-->
+	<section>
+		<h4 class="title d-flex justify-content-center mt-4">Customer Reviews</h4>
+					<!-- *CARD STARTS -->
+					<div class="card border-0 shadow" th:each="review : ${reviewsList}">
+							<div >
+								<div class="card-body">
+									<!-- Username -->
+									<a th:href="|/profile/${review.getUser().getUsername()}|"> <p th:text="${review.user.username}"></p></a>
+									<!-- Title -->
+									<h5 class="card-title" th:text="${review.title}"></h5>
+									<!-- Body -->
+									<div class="d-flex align-items-center">
+									<p class="card-body" th:text="${review.reviewBody}"></p>
+										<!-- Stars -->
+										<div class="no-wrap" th:switch="${review.rating}">
+											<p th:case="'1'">
+												<i class="fa-solid star fa-star" value="1"></i>
+												<i class="fa-regular star fa-star" value="2"></i>
+												<i class="fa-regular star fa-star" value="3"></i>
+												<i class="fa-regular star fa-star" value="4"></i>
+												<i class="fa-regular star fa-star" value="5"></i>
+												<span> 1</span>
+											</p>
+											<p th:case="'2'">
+												<i class="fa-solid star fa-star" value="1"></i>
+												<i class="fa-solid star fa-star" value="2"></i>
+												<i class="fa-regular star fa-star" value="3"></i>
+												<i class="fa-regular star fa-star" value="4"></i>
+												<i class="fa-regular star fa-star" value="5"></i>
+												<span> 2</span>
+											</p>
+											<p th:case="'3'">
+												<i class="fa-solid star fa-star" value="1"></i>
+												<i class="fa-solid star fa-star" value="2"></i>
+												<i class="fa-solid star fa-star" value="3"></i>
+												<i class="fa-regular star fa-star" value="4"></i>
+												<i class="fa-regular star fa-star" value="5"></i>
+												<span> 3</span>
+											</p>
+											<p th:case="'4'">
+												<i class="fa-solid star fa-star" value="1"></i>
+												<i class="fa-solid star fa-star" value="2"></i>
+												<i class="fa-solid star fa-star" value="3"></i>
+												<i class="fa-solid star fa-star" value="4"></i>
+												<i class="fa-regular star fa-star" value="5"></i>
+												<span> 4</span>
+											</p>
+											<p th:case="'5'">
+												<i class="fa-solid star fa-star" value="1"></i>
+												<i class="fa-solid star fa-star" value="2"></i>
+												<i class="fa-solid star fa-star" value="3"></i>
+												<i class="fa-solid star fa-star" value="4"></i>
+												<i class="fa-solid star fa-star" value="5"></i>
+												<span> 5</span>
+											</p>
+										</div>
+									</div>
+									<p class="fs-6 fw-lighter" th:text="${review.publishedDate}"></p>
+								</div>
+							</div>
+					</div>
+			</div>
+		</section>
+</main>
+
+
+<footer th:replace="partials :: footer"></footer>
 
 </body>
 </html>

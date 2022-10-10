@@ -1,6 +1,7 @@
 package com.codeup.bookwormapp.controllers;
 
 import com.codeup.bookwormapp.models.Book;
+import com.codeup.bookwormapp.models.Review;
 import com.codeup.bookwormapp.repository.BookRepository;
 import com.codeup.bookwormapp.repository.ReviewRepository;
 import com.codeup.bookwormapp.repository.UserRepository;
@@ -10,9 +11,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import org.springframework.web.bind.annotation.PathVariable;
+import org.thymeleaf.expression.Lists;
+import org.thymeleaf.expression.Sets;
+
+
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
+
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 
 @Controller
@@ -120,9 +128,17 @@ public class BookController {
 
 
     //-- Single Book Layout
-    @GetMapping("/singleBook")
-    public String singleBook(){
+    @GetMapping("/singleBook/{id}")
+    public String singleBook(@PathVariable long id, Model model, Review review){
+        Book book = bookDao.findById(id).get();
+        model.addAttribute("book", book);
+        List<Review> reviewsList = reviewDao.findAllByBook(book);
+        model.addAttribute("reviewsList", reviewsList);
+
+
         return "main/singleBook";
     }
+
+
 
 }
