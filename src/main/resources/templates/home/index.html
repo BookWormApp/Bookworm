@@ -41,33 +41,38 @@
 			<!-- Right Arrow -->
 			<i class="fa-solid fw-bolder fa-arrow-right-long col-2 fs-4"></i>
 		</div>
-		<!-- Container of the all Books -->
-		<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 p-0 m-0 w-100 flex-nowrap containerOfAllBooksBackground text-center">
+		<!-- Bookseller Section -->
+		<div class="row row-cols-2 row-cols-sm-3 row-cols-lg-4 row-cols-xl-5 p-0 m-0 w-100 flex-nowrap containerOfAllBooksBackground text-center">
 			<!-- Book Display -->
-			<div class="col container-fluid py-5 bookImageContainer-Index"  th:each="book: ${books}" th:unless="${bookStat.index >8}" style="z-index:0;">
+			<div class="col container-fluid py-5 m-0 bookImageContainer-Index"  th:each="book: ${books}" th:unless="${bookStat.index >8}">
 				<!-- Rating -->
-				<div class="flex-nowrap badge float-end ratingBadge-Index">
-					<h5><i class="fa-solid fa-star"></i> <span th:text="${book.rating}">rating</span></h5>
+				<div class="flex-nowrap badge ratingBadge-Index">
+					<h6 class="p-0 m-0 d-block d-md-none"><i class="fa-solid fa-star"></i> <span th:text="${book.rating}">rating</span></h6>
+					<h5 class="p-0 m-0 d-none d-md-block"><i class="fa-solid fa-star"></i> <span th:text="${book.rating}">rating</span></h5>
 				</div>
 				<!-- Book Image -->
 				<div class="d-flex justify-content-center w-100">
 					<!-- Large Screen -->
-					<img th:src="${book.bookImage}" th:alt="${book.title}" class="d-none d-md-block shadow rounded-3 bookImage-Index" th:height="280" width="220"/>
+					<img th:src="${book.bookImage}" th:alt="${book.title}" class="d-none d-md-block rounded-3 bookImage-Index" th:height="280" width="220"/>
 					<!-- Small Screen -->
-					<img th:src="${book.bookImage}" th:alt="${book.title}" class="d-block d-md-none  shadow rounded-3 bookImage-Index" th:height="180" width="120"/>
+					<img th:src="${book.bookImage}" th:alt="${book.title}" class="d-block d-md-none  rounded-3 bookImage-Index" th:height="180" width="120"/>
 				</div>
 				<!-- Book Genre -->
 				<div class="flex-nowrap badge badge-Index">
-					<!-- Text -->
-					<h5 class="p-0 m-0" th:text="${book.genre}">Genre</h5>
+					<!-- Text Small-->
+					<h6 class="p-0 m-0 d-block d-md-none" th:text="${book.genre}">Genre</h6>
+					<!-- Text Large-->
+					<h5 class="p-0 m-0 d-none d-md-block" th:text="${book.genre}">Genre</h5>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!----- Categories Section ----->
 	<div class="py-5 text-center container-fluid categories-index">
-		<!--Title-->
-		<h2 class="pb-2 w-50 display-5 mx-auto border-bottom border-dark">Categories</h2>
+		<!-- Title  Small-->
+		<h2 class="pb-2 w-75 d-block d-md-none display-5 mx-auto border-bottom border-dark fw-bold text-center">Categories</h2>
+		<!-- Title  large-->
+		<h2 class="pb-2 w-50 d-none d-md-block display-5 mx-auto border-bottom border-dark fw-bold text-center">Categories</h2>
 		<!-- Arrow Container -->
 		<div class="row w-100 d-flex justify-content-center">
 			<!-- Left Arrow -->
@@ -77,25 +82,31 @@
 			<!-- Right Arrow -->
 			<i class="fa-solid fw-bolder fa-arrow-right-long col-2 fs-4"></i>
 		</div>
-		<div class="row row-cols-2 row-cols-md-4 flex-nowrap py-5 container-fluid mx-auto categoriesGenre-index">
+		<!-- Genre Section -->
+		<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 flex-nowrap py-5 container-fluid mx-auto categoriesGenre-index">
 			<!-- Start of the Categories -->
 			<div class="col" th:each="genre: ${bookGenre}">
 				<!-- Genre Content Container -->
-				<div class="d-flex list-unstyled container mt-auto justify-content-evenly">
-					<div class="d-flex align-items-center rounded-5 p-4 p-md-5 categoriesGenreBoxBackground-index" style="">
-						<!--/*@thymesVar id="contains" type=""*/-->
-						<h5 th:text="${genre}">Genre</h5>
+				<div class="card">
+					<!-- Card Body -->
+					<div class="card-body categoriesGenreBoxBackground-index m-0 p-2 p-sm-0 py-sm-4 w-100">
+						<!-- Text Genre XSmall -->
+						<h6 th:text="${genre}" class="fw-bold d-block d-sm-none">Genre</h6>
+						<!-- Text Genre small & up  -->
+						<h5 th:text="${genre}" class="fw-bold display- d-none d-sm-block">Genre</h5>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
+
 	<!----- Reviews Section ----->
-	<div class="container-fluid pb-md-5 py-5 " id="reviewsSection-Index">
-		<!-- Section Title (small) -->
-		<h2 class="pb-2 w-75 d-block d-md-none  display-5 mx-auto text-center border-bottom border-dark">Recent Reviews</h2>
-		<!-- Section Title (med) -->
-		<h2 class="pb-2 w-50 d-none d-md-block  display-5 mx-auto text-center border-bottom border-dark">Recent Reviews</h2>
+	<div class="container-fluid py-5 " id="reviewsSection-Index">
+		<!-- Title  Small-->
+		<h2 class="w-75 d-block d-md-none display-5 mx-auto border-bottom border-dark fw-bold text-center">Bookworm Reviews</h2>
+		<!-- Title  large-->
+		<h2 class="w-50 d-none d-md-block display-5 mx-auto border-bottom border-dark fw-bold text-center">Bookworm Reviews</h2>
 		<!-- Arrow Container -->
 		<div class="row w-100 d-flex justify-content-center">
 			<!-- Left Arrow -->
@@ -105,52 +116,36 @@
 			<!-- Right Arrow -->
 			<i class="fa-solid fw-bolder fa-arrow-right-long col-2 fs-4"></i>
 		</div>
-		<!-- Review Container to make it scrollable-->
-		<div class="container-fluid row row-cols-1 row-cols-md-6 w-100 flex-nowrap py-5 reviewscontainer-Index">
-			<!-- Start of Review -->
-			<div class="row" th:each="review: ${reviews}" th:unless="${reviewStat.index > 9}">
-				<!-- Review Card -->
-				<div class="col position-relative">
-					<!-- User Profile Pic (small)-->
-					<img  th:src="${review.user.profilePhoto}" th:if="${review.user.profilePhoto != null}" class="d-block d-md-none rounded-circle border border-3 border-success position-absolute top-50 start-0 p-0 profilePicSM" height="70px" width="70px"/>
-					<!-- User Profile Pic (med)-->
-					<img  th:src="${review.user.profilePhoto}" th:if="${review.user.profilePhoto != null}" class="d-none d-md-block rounded-circle border border-3 border-success position-absolute top-50 start-0 p-0 profilePicLG" height="70px" width="70px"/>
-					<!-- Username (small) -->
-					<a href="/register" class="d-block d-md-none link-light fs-6 badge px-3 rounded-3 text-capitalize text-decoration-none position-absolute top-50 start-0 usernameSM-index">
-						@<span th:text="${review.user.username}">Username</span>
-					</a>
-					<!-- Username (med)) -->
-					<a href="/register" class="d-none d-md-block link-light fs-6 badge px-3 rounded-3 text-capitalize text-decoration-none position-absolute top-50 start-0 usernameLG-index">
-						@<span th:text="${review.user.username}">Username</span>
-					</a>
-					<!-- Rating -->
-					<div class="flex-nowrap position-absolute end-0 badge float-end ratingReviewBadge-index">
-						<!-- Rating Text -->
-						<h5 class="p-0 m-0"><i class="fa-solid fa-star p-0 m-0"></i> <span th:text="${review.rating}">rating</span></h5>
+		<div class=" row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 p-0 m-0 w-100 flex-nowrap reviewscontainer-Index mt-3">
+			<div class="col container-fluid" th:each="review: ${reviews}" th:unless="${reviewStat.index > 9}">
+				<div class="card h-100 position-relative">
+					<img th:src="${review.book.bookImage}" th:alt="${review.book.title}" class="card-img-top" th:height="180"/>
+					<div class="card-body">
+						<div class="col position-absolute start-0 top-0 p-2 m-0">
+							<!-- User Profile Pic -->
+							<img  th:src="${review.user.profilePhoto}" th:if="${review.user.profilePhoto != null}" class="d-block d-sm-none rounded-circle border border-3 border-success p-0 profilePicLG" height="60px" width="60px"/>
+							<img  th:src="${review.user.profilePhoto}" th:if="${review.user.profilePhoto != null}" class="d-none d-sm-block rounded-circle border border-3 border-success p-0 profilePicLG" height="70px" width="70px"/>
+							<!-- Username (med)) -->
+							<a href="/register" class="link-light badge px-3 mt-1 rounded-3 fs-6 fs-sm-5 text-capitalize text-decoration-none usernameReviews">
+								@<span th:text="${review.user.username}">Username</span>
+							</a>
+						</div>
+						<h5 class="card-title" th:text="${review.title}">Card title</h5>
+						<p class="card-text" th:text="${review.reviewBody}">This is a wider card</p>
 					</div>
-					<!-- Image Book -->
-					<div class="card h-100">
-						<!-- Book Image (large) -->
-						<img th:src="${review.book.bookImage}" class="card-img-top d-none d-md-block" th:alt="${review.title}" th:height="240" width="180">
-						<!-- Book Image (small) -->
-						<img th:src="${review.book.bookImage}" class="card-img-top d-block d-md-none" th:alt="${review.title}" th:height="180" width="120">
-						<!-- Card Body -->
-						<div class="card-body mt-2">
-							<!-- Review Title -->
-							<h5 class="card-title text-decoration-underline" th:text="${review.title}">Card title</h5>
-							<!-- Review Body -->
-							<p class="card-text" th:text="${review.reviewBody}">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-						</div>
-						<!-- Footer -->
-						<div class="card-footer">
-							<!-- Footer Text -->
-							<small class="text-muted" th:text="${review.publishedDate}">Last updated 3 mins ago</small>
-						</div>
+					<div class="card-footer">
+						<small class="text-muted" th:text="${review.publishedDate}">Last updated 3 mins ago</small>
 					</div>
 				</div>
 			</div>
+
 		</div>
 	</div>
+
+
+
+
+
 	<!-- Footer -->
 	<footer th:replace="partials :: footer"></footer>
 </body>
