@@ -99,8 +99,6 @@
 			</div>
 		</div>
 	</div>
-
-
 	<!----- Reviews Section ----->
 	<div class="container-fluid py-5 " id="reviewsSection-Index">
 		<!-- Title  Small-->
@@ -123,8 +121,10 @@
 					<div class="card-body">
 						<div class="col position-absolute start-0 top-0 p-2 m-0">
 							<!-- User Profile Pic -->
-							<img  th:src="${review.user.profilePhoto}" th:if="${review.user.profilePhoto != null}" class="d-block d-sm-none rounded-circle border border-3 border-success p-0 profilePicLG" height="60px" width="60px"/>
-							<img  th:src="${review.user.profilePhoto}" th:if="${review.user.profilePhoto != null}" class="d-none d-sm-block rounded-circle border border-3 border-success p-0 profilePicLG" height="70px" width="70px"/>
+							<a href="/register">
+								<img  th:src="${review.user.profilePhoto}" th:if="${review.user.profilePhoto != null}" class="d-block d-sm-none rounded-circle border border-3 border-success p-0 profilePicSM" height="60px" width="60px"/>
+								<img  th:src="${review.user.profilePhoto}" th:if="${review.user.profilePhoto != null}" class="d-none d-sm-block rounded-circle border border-3 border-success p-0 profilePicLG" height="70px" width="70px"/>
+							</a>
 							<!-- Username (med)) -->
 							<a href="/register" class="link-light badge px-3 mt-1 rounded-3 fs-6 fs-sm-5 text-capitalize text-decoration-none usernameReviews">
 								@<span th:text="${review.user.username}">Username</span>
@@ -141,11 +141,6 @@
 
 		</div>
 	</div>
-
-
-
-
-
 	<!-- Footer -->
 	<footer th:replace="partials :: footer"></footer>
 </body>
