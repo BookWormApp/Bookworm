@@ -87,7 +87,7 @@
 			<!-- Start of the Categories -->
 			<div class="col" th:each="genre: ${bookGenre}">
 				<!-- Genre Content Container -->
-				<div class="card">
+				<div class="card border border-0">
 					<!-- Card Body -->
 					<div class="card-body categoriesGenreBoxBackground-index m-0 p-2 p-sm-0 py-sm-4 w-100">
 						<!-- Text Genre XSmall -->
@@ -116,7 +116,7 @@
 		</div>
 		<div class=" row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 p-0 m-0 w-100 flex-nowrap reviewscontainer-Index mt-3">
 			<div class="col container-fluid" th:each="review: ${reviews}" th:unless="${reviewStat.index > 9}">
-				<div class="card h-100 position-relative">
+				<div class="card border border-0 h-100 position-relative">
 					<img th:src="${review.book.bookImage}" th:alt="${review.book.title}" class="card-img-top" th:height="180"/>
 					<div class="card-body">
 						<div class="col position-absolute start-0 top-0 p-2 m-0">
@@ -138,7 +138,6 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
 	</div>
 	<!-- Footer -->
